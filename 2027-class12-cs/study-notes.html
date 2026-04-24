@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <style>
+    body { font-family: 'Segoe UI'; background:#f1f3f6; margin:0; }
+    header { background:#2a5298; color:white; padding:15px; text-align:center; }
+    .container { padding:15px; }
+
+    .file {
+      background:white;
+      margin-bottom:10px;
+      padding:12px;
+      border-radius:10px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    a {
+      text-decoration:none;
+      color:#1e3c72;
+      font-weight:bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  📘 Class 12 Computer Science - Study Notes
+</header>
+
+<div class="container" id="fileList">
+  <p>Loading notes...</p>
+</div>
+
+<script>
+const username = "DavidPaulCS";
+const repo = "STANESCBSE";
+const folder = "2027-class12-cs/study-notes";
+
+const apiURL = `https://api.github.com/repos/${username}/${repo}/contents/${folder}`;
+
+fetch(apiURL)
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("fileList");
+    container.innerHTML = "";
+
+    data.forEach(file => {
+      if (file.name.endsWith(".pdf")) {
+        let div = document.createElement("div");
+        div.className = "file";
+
+        div.innerHTML = `
+          <a href="${file.download_url}" target="_blank">
+            📄 ${file.name.replace(".pdf","").replace(/-/g," ")}
+          </a>
+        `;
+
+        container.appendChild(div);
+      }
+    });
+  })
+  .catch(() => {
+    document.getElementById("fileList").innerHTML = "❌ No notes uploaded yet";
+  });
+</script>
+
+</body>
+</html>
