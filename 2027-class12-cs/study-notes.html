@@ -88,7 +88,10 @@ fetch('notes.json')
 
   let container = document.getElementById("fileList");
 
-  // Sort pinned first
+  // 🔄 Latest first (reverse order)
+  data.notes.reverse();
+
+  // 📌 Sort pinned first
   data.notes.sort((a,b) => pinnedFiles.includes(b.file) - pinnedFiles.includes(a.file));
 
   data.notes.forEach(note => {
@@ -100,13 +103,21 @@ fetch('notes.json')
       div.classList.add("pinned");
     }
 
+    let icon = getFileIcon(note.file);
+    let cleanName = note.file.replace(/\.[^/.]+$/, "");
+    let previewURL = getPreviewURL(note.file);
+    let runURL = getRunURL(note.file);
+
     div.innerHTML = `
       <div class="top">
-        <span>${note.file.replace(".pdf","")}</span>
+        <span>${icon} ${cleanName}</span>
 
         <span class="actions">
           <i class="fas fa-thumbtack" onclick="togglePin('${note.file}')"></i>
-          <i class="fas fa-eye" onclick="previewFile('study-notes/${note.file}', this)"></i>
+          <i class="fas fa-eye" onclick="previewFile('${previewURL}', this)"></i>
+
+          ${runURL ? `<a href="${runURL}" target="_blank"><i class="fas fa-play"></i></a>` : ""}
+
           <a href="study-notes/${note.file}" download>
             <i class="fas fa-download"></i>
           </a>
@@ -120,6 +131,40 @@ fetch('notes.json')
   });
 
 });
+
+// 📄 File Icons
+function getFileIcon(file) {
+  if (file.endsWith(".pdf")) return "📄";
+  if (file.endsWith(".py")) return "🐍";
+  if (file.endsWith(".ipynb")) return "📓";
+  if (file.endsWith(".doc") || file.endsWith(".docx")) return "📝";
+  return "📁";
+}
+
+// ▶️ Run URL (Colab)
+function getRunURL(file) {
+  if (file.endsWith(".py") || file.endsWith(".ipynb")) {
+    return `https://colab.research.google.com/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${file}`;
+  }
+  return null;
+}
+
+// 👁 Preview URL
+function getPreviewURL(file) {
+
+  // 📓 Notebook preview
+  if (file.endsWith(".ipynb")) {
+    return `https://nbviewer.org/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${file}`;
+  }
+
+  // 🐍 Python preview (raw code)
+  if (file.endsWith(".py")) {
+    return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
+  }
+
+  // 📄 Default (PDF etc.)
+  return "study-notes/" + file;
+}
 
 // 🔍 Search
 function searchFiles() {
@@ -146,7 +191,7 @@ function togglePin(file) {
   location.reload();
 }
 
-// 👁 Preview
+// 👁 Preview toggle
 function previewFile(url, icon) {
   let parent = icon.closest(".file");
   let iframe = parent.querySelector(".preview");
