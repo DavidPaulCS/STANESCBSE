@@ -102,7 +102,7 @@ fetch('notes.json')
 
     div.innerHTML = `
       <div class="top">
-        <span>${note.name}</span>
+        <span>${note.file.replace(".pdf","")}</span>
 
         <span class="actions">
           <i class="fas fa-thumbtack" onclick="togglePin('${note.file}')"></i>
