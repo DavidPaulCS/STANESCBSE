@@ -1,3 +1,16 @@
 {
-  "file": "chapter1-python.pdf"
+  "notes": [
+    {
+      "name": "Abbreviations - CS - Class 12",
+      "file": "Abbreviations - CS - Class 12.pdf"
+    },
+    {
+      "name": "IMPORTANT POINTS TO REMEMBER - PYTHON",
+      "file": "IMPORTANT POINTS TO REMEMBER - PYTHON.pdf"
+    },
+    {
+      "name": "Python – String, List, Dictionary, Tuple, Common & Module Functions",
+      "file": "Python – String, List, Dictionary, Tuple, Common & Module Functions.pdf"
+    }
+  ]
 }
