@@ -41,7 +41,6 @@
       margin-bottom: 10px;
     }
 
-    /* CATEGORY */
     .categories {
       display: flex;
       gap: 8px;
@@ -62,7 +61,17 @@
       color: white;
     }
 
-    /* CARD */
+    .section-title {
+      font-size: 14px;
+      margin: 10px 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .dark .section-title {
+      color: #bbb;
+    }
+
     .file {
       background: white;
       margin-bottom: 10px;
@@ -99,6 +108,10 @@
       cursor: pointer;
     }
 
+    .active-pin {
+      color: gold;
+    }
+
     .preview {
       width: 100%;
       height: 250px;
@@ -108,7 +121,6 @@
       border: none;
     }
 
-    /* BOTTOM NAV */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -143,11 +155,15 @@
 
   <div class="categories">
     <button onclick="filterCategory('all')" class="active">All</button>
-    <button onclick="filterCategory('python')">Python</button>
-    <button onclick="filterCategory('docs')">Docs</button>
     <button onclick="filterCategory('pdf')">PDFs</button>
+    <button onclick="filterCategory('docs')">Docs</button>
+    <button onclick="filterCategory('python')">Python Files</button>
   </div>
 
+  <!-- 📌 PINNED SECTION -->
+  <div id="pinnedSection"></div>
+
+  <!-- 📄 NORMAL FILES -->
   <div id="fileList"></div>
 
 </div>
@@ -161,6 +177,7 @@
 
 let allNotes = [];
 let currentCategory = "all";
+let pinnedFiles = JSON.parse(localStorage.getItem("pinnedFiles")) || [];
 
 fetch('notes.json')
 .then(res => res.json())
@@ -170,7 +187,11 @@ fetch('notes.json')
 });
 
 function renderNotes() {
+
+  let pinnedContainer = document.getElementById("pinnedSection");
   let container = document.getElementById("fileList");
+
+  pinnedContainer.innerHTML = "";
   container.innerHTML = "";
 
   let notes = allNotes;
@@ -179,36 +200,67 @@ function renderNotes() {
     notes = notes.filter(n => n.category === currentCategory);
   }
 
-  notes.forEach(note => {
+  let pinned = notes.filter(n => pinnedFiles.includes(n.file));
+  let others = notes.filter(n => !pinnedFiles.includes(n.file));
 
-    let div = document.createElement("div");
-    div.className = "file";
+  if (pinned.length > 0) {
+    pinnedContainer.innerHTML += `<div class="section-title">📌 Pinned</div>`;
+    pinned.forEach(note => pinnedContainer.appendChild(createCard(note)));
+  }
 
-    let icon = getFileIcon(note.file);
-    let cleanName = note.file.replace(/\.[^/.]+$/, "");
-    let previewURL = getPreviewURL(note.file);
+  if (others.length > 0) {
+    container.innerHTML += `<div class="section-title">All Notes</div>`;
+    others.forEach(note => container.appendChild(createCard(note)));
+  }
+}
 
-    div.innerHTML = `
-      <div class="top">
-        <div class="title">
-          <span style="margin-right:8px;">${icon}</span>
-          ${cleanName}
-        </div>
+function createCard(note) {
 
-        <div class="actions">
-          <i class="fas fa-eye" onclick="previewFile('${previewURL}', this)"></i>
+  let div = document.createElement("div");
+  div.className = "file";
 
-          <a href="study-notes/${note.file}" download>
-            <i class="fas fa-download"></i>
-          </a>
-        </div>
+  let icon = getFileIcon(note.file);
+  let cleanName = note.file.replace(/\.[^/.]+$/, "");
+  let previewURL = getPreviewURL(note.file);
+
+  div.innerHTML = `
+    <div class="top">
+      <div class="title">
+        <span style="margin-right:8px;">${icon}</span>
+        ${cleanName}
       </div>
 
-      <iframe class="preview"></iframe>
-    `;
+      <div class="actions">
 
-    container.appendChild(div);
-  });
+        <i class="fas fa-thumbtack ${pinnedFiles.includes(note.file) ? 'active-pin' : ''}"
+           onclick="togglePin('${note.file}')"></i>
+
+        <i class="fas fa-eye" onclick="previewFile('${previewURL}', this)"></i>
+
+        <a href="study-notes/${note.file}" download>
+          <i class="fas fa-download"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <iframe class="preview"></iframe>
+  `;
+
+  return div;
+}
+
+function togglePin(file) {
+  let index = pinnedFiles.indexOf(file);
+
+  if (index === -1) {
+    pinnedFiles.push(file);
+  } else {
+    pinnedFiles.splice(index, 1);
+  }
+
+  localStorage.setItem("pinnedFiles", JSON.stringify(pinnedFiles));
+  renderNotes();
 }
 
 function filterCategory(category) {
