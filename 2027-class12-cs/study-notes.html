@@ -18,15 +18,19 @@
       color: white;
     }
 
-    header {
-      background: linear-gradient(135deg,#2a5298,#1e3c72);
-      color: white;
-      padding: 12px 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 18px;
-    }
+    .header {
+  position: relative;
+  background: linear-gradient(135deg,#2a5298,#1e3c72);
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.header .title {
+  display: block;
+}
 
     .container {
       padding: 10px;
@@ -144,9 +148,8 @@
 
 <body>
 
-<header>
-  📘 Study Notes
-  <i class="fas fa-moon" onclick="toggleDark()"></i>
+<header class="header">
+  <span class="title">📘 Study Notes</span>
 </header>
 
 <div class="container">
