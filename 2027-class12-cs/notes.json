@@ -1,7 +1,20 @@
 {
   "notes": [
-    {"file": "Abbreviations - CS - Class 12.pdf"},
-    {"file": "IMPORTANT POINTS TO REMEMBER - PYTHON.pdf"},
-    {"file": "Python – String, List, Dictionary, Tuple, Common & Module Functions.pdf"}
+    {
+      "file": "Python - String List Dictionary Tuple.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "Important Points - Python.pdf",
+      "category": "notes"
+    },
+    {
+      "file": "Abbreviations - CS - Class 12.pdf",
+      "category": "notes"
+    },
+    {
+      "file": "programs.py",
+      "category": "python"
+    }
   ]
 }
