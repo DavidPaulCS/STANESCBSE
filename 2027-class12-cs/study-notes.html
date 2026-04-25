@@ -157,7 +157,10 @@ fetch('notes.json')
 
     div.innerHTML = `
       <div class="top">
-        <span>${icon} ${cleanName}</span>
+        <div class="title">
+  <span style="margin-right:8px;">${icon}</span>
+  ${cleanName}
+</div>
 
         <span class="actions">
           <i class="fas fa-thumbtack" onclick="togglePin('${note.file}')"></i>
