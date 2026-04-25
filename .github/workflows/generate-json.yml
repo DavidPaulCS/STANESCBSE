@@ -17,7 +17,7 @@ jobs:
           python3 <<EOF
           import os, json
 
-          folder = "study-notes"
+          folder = "2027-class12-cs/study-notes"
           notes = []
 
           for file in os.listdir(folder):
