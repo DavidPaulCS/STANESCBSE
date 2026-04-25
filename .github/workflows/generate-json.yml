@@ -1,0 +1,52 @@
+name: Generate Notes JSON
+
+on:
+  push:
+    paths:
+      - 'study-notes/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Generate JSON
+        run: |
+          python3 <<EOF
+          import os, json
+
+          folder = "study-notes"
+          notes = []
+
+          for file in os.listdir(folder):
+              if file.startswith("."):
+                  continue
+
+              if file.endswith(".pdf"):
+                  category = "pdf"
+              elif file.endswith(".py") or file.endswith(".ipynb"):
+                  category = "python"
+              elif file.endswith(".doc") or file.endswith(".docx"):
+                  category = "docs"
+              else:
+                  category = "others"
+
+              notes.append({
+                  "file": file,
+                  "category": category
+              })
+
+          with open("notes.json", "w") as f:
+              json.dump({"notes": notes}, f, indent=2)
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add notes.json
+          git commit -m "Auto update notes.json" || echo "No changes"
+          git push
