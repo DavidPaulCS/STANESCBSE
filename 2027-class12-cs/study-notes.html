@@ -184,7 +184,7 @@ let allNotes = [];
 let currentCategory = "all";
 let pinnedFiles = JSON.parse(localStorage.getItem("pinnedFiles")) || [];
 
-fetch('notes.json')
+fetch('/STANESCBSE/notes.json')
 .then(res => res.json())
 .then(data => {
   allNotes = data.notes.reverse();
