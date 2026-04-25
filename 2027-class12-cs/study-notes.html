@@ -280,7 +280,7 @@ function createCard(note) {
   div.className = "file";
 
   let icon = getFileIcon(note.file);
-  let cleanName = note.file.replace(/\.[^/.]+$/, "");
+  let cleanName = decodeURIComponent(note.file).replace(/\.[^/.]+$/, "");
   let previewURL = getPreviewURL(note.file);
 
   div.onclick = function(e) {
@@ -368,7 +368,7 @@ function getPreviewURL(file) {
   if (file.endsWith(".py")) {
     return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
   }
-  return "study-notes/" + file;
+  return `https://docs.google.com/gview?url=https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${file}&embedded=true`;
 }
 
 function toggleDark() {
