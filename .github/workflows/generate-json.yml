@@ -3,8 +3,7 @@ name: Generate Notes JSON
 on:
   push:
     paths:
-      - 'study-notes/**'
-
+      - '2027-class12-cs/study-notes/**'
 jobs:
   build:
     runs-on: ubuntu-latest
