@@ -29,25 +29,12 @@
 
     /* HEADER */
     .header {
-      position: relative;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: white;
       padding: 20px;
       text-align: center;
       font-size: 18px;
       font-weight: bold;
-    }
-
-    .header .title {
-      display: block;
-    }
-
-    .dark-toggle {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
     }
 
     /* SEARCH */
@@ -68,6 +55,7 @@
     /* CONTAINER */
     .container {
       padding: 12px;
+      padding-bottom: 70px; /* for bottom nav */
       display: grid;
       gap: 12px;
     }
@@ -88,8 +76,9 @@
 
     .card h2 {
       margin: 0 0 10px 0;
+      font-size: 17px; /* slightly bigger */
+      font-weight: 600;
       color: #1e3c72;
-      font-size: 15px;
     }
 
     .dark .card h2 {
@@ -113,6 +102,28 @@
 
     .links a:hover {
       background: #d6e4ff;
+    }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      padding: 12px 0;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    }
+
+    .bottom-nav i {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .dark .bottom-nav {
+      background: #1e1e1e;
+      color: white;
     }
 
     /* ANIMATION */
@@ -143,8 +154,7 @@
 <body>
 
 <header class="header">
-  <span class="title">Stanes CBSE - Computer Science Portal (Class XI & XII)</span>
-  <i class="dark-toggle" onclick="toggleDark()">🌙</i>
+  Stanes CBSE - Computer Science Portal (Class XI & XII)
 </header>
 
 <div class="search-box">
@@ -183,6 +193,11 @@
     </div>
   </div>
 
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <i onclick="toggleDark()">🌙</i>
 </div>
 
 </body>
