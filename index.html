@@ -9,19 +9,50 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       background: #f1f3f6;
+      transition: 0.3s;
     }
 
-    header {
+    /* DARK MODE */
+    .dark {
+      background: #121212;
+      color: white;
+    }
+
+    .dark .card {
+      background: #1e1e1e;
+    }
+
+    .dark .links a {
+      background: #2a2a2a;
+      color: white;
+    }
+
+    /* HEADER */
+    .header {
+      position: relative;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 22px;
+      font-size: 18px;
       font-weight: bold;
     }
 
+    .header .title {
+      display: block;
+    }
+
+    .dark-toggle {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    /* SEARCH */
     .search-box {
-      padding: 15px;
+      padding: 12px;
       text-align: center;
     }
 
@@ -29,65 +60,66 @@
       width: 90%;
       max-width: 400px;
       padding: 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       border: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
     }
 
+    /* CONTAINER */
     .container {
-      padding: 15px;
+      padding: 12px;
       display: grid;
-      gap: 15px;
+      gap: 12px;
     }
 
+    /* CARD */
     .card {
       background: white;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 14px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      animation: fadeIn 0.4s ease;
+      transition: 0.2s;
+    }
+
+    .card:active {
+      transform: scale(0.98);
     }
 
     .card h2 {
-      margin-top: 0;
+      margin: 0 0 10px 0;
       color: #1e3c72;
+      font-size: 15px;
     }
 
+    .dark .card h2 {
+      color: #9bbcff;
+    }
+
+    /* LINKS */
     .links a {
-      display: block;
-      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px 0;
       padding: 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
       background: #eef3ff;
       color: #2a5298;
-      font-weight: bold;
-      transition: 0.3s;
+      font-weight: 500;
+      transition: 0.2s;
     }
 
     .links a:hover {
       background: #d6e4ff;
     }
-    .dark {
-  background: #121212;
-  color: white;
-}
 
-.dark .card {
-  background: #1e1e1e;
-}
-
-.dark .links a {
-  background: #2a2a2a;
-  color: white;
-}
-    .card {
-  animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    /* ANIMATION */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 
   <script>
@@ -100,17 +132,19 @@
         cards[i].style.display = text.includes(input) ? "block" : "none";
       }
     }
+
     function toggleDark() {
-  document.body.classList.toggle("dark");
+      document.body.classList.toggle("dark");
+    }
   </script>
 
 </head>
 
 <body>
 
-<header>
-  Stanes CBSE - Computer Science Portal (Class XI & XII)
-  <i onclick="toggleDark()" style="cursor:pointer;">🌙</i>
+<header class="header">
+  <span class="title">Stanes CBSE - Computer Science Portal (Class XI & XII)</span>
+  <i class="dark-toggle" onclick="toggleDark()">🌙</i>
 </header>
 
 <div class="search-box">
@@ -122,35 +156,34 @@
   <div class="card">
     <h2>🎓 2027 - Class 12 Computer Science</h2>
     <div class="links">
-      <a href="2027-class12-cs/study-notes.html">📘 Study Notes</a>
-      <a href="2027-class12-cs/practice-programs.html">💻 Practice Programs</a>
-      <a href="2027-class12-cs/practical-files.html">📂 Practical Files</a>
-      <a href="2027-class12-cs/general-docs.html">📄 General Docs</a>
+      <a href="2027-class12-cs/study-notes.html">📘 Study Notes <span>›</span></a>
+      <a href="2027-class12-cs/practice-programs.html">💻 Practice Programs <span>›</span></a>
+      <a href="2027-class12-cs/practical-files.html">📂 Practical Files <span>›</span></a>
+      <a href="2027-class12-cs/general-docs.html">📄 General Docs <span>›</span></a>
     </div>
   </div>
 
   <div class="card">
     <h2>🎓 2027 - Class 12 Informatics Practices</h2>
     <div class="links">
-      <a href="2027-class12-ip/study-notes.html">📘 Study Notes</a>
-      <a href="2027-class12-ip/practice-programs.html">💻 Practice Programs</a>
-      <a href="2027-class12-ip/practical-files.html">📂 Practical Files</a>
-      <a href="2027-class12-ip/general-docs.html">📄 General Docs</a>
+      <a href="2027-class12-ip/study-notes.html">📘 Study Notes <span>›</span></a>
+      <a href="2027-class12-ip/practice-programs.html">💻 Practice Programs <span>›</span></a>
+      <a href="2027-class12-ip/practical-files.html">📂 Practical Files <span>›</span></a>
+      <a href="2027-class12-ip/general-docs.html">📄 General Docs <span>›</span></a>
     </div>
   </div>
 
   <div class="card">
     <h2>🎓 2027 - Class 11 Computer Science</h2>
     <div class="links">
-      <a href="2027-class11-cs/study-notes.html">📘 Study Notes</a>
-      <a href="2027-class11-cs/practice-programs.html">💻 Practice Programs</a>
-      <a href="2027-class11-cs/practical-files.html">📂 Practical Files</a>
-      <a href="2027-class11-cs/general-docs.html">📄 General Docs</a>
+      <a href="2027-class11-cs/study-notes.html">📘 Study Notes <span>›</span></a>
+      <a href="2027-class11-cs/practice-programs.html">💻 Practice Programs <span>›</span></a>
+      <a href="2027-class11-cs/practical-files.html">📂 Practical Files <span>›</span></a>
+      <a href="2027-class11-cs/general-docs.html">📄 General Docs <span>›</span></a>
     </div>
   </div>
 
 </div>
 
-}
 </body>
 </html>
