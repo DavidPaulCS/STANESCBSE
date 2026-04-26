@@ -362,8 +362,11 @@ function getFileIcon(file) {
 }
 
 function getPreviewURL(file) {
+  function getPreviewURL(file) {
   if (file.endsWith(".ipynb")) {
-    return `https://emgithub.com/embed.html?target=https://github.com/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${encodeURIComponent(file)}`;
+    // Use RAW GitHub URL for emgithub
+    const rawUrl = `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${encodeURIComponent(file)}`;
+    return `https://emgithub.com/embed.html?target=${rawUrl}`;
   }
   if (file.endsWith(".pdf")) {
     return `https://docs.google.com/gview?url=https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${encodeURIComponent(file)}&embedded=true`;
