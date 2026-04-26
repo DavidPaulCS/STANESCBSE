@@ -1,6 +1,10 @@
 {
   "notes": [
     {
+      "file": "2-Data-Types.pdf",
+      "category": "pdf"
+    },
+    {
       "file": "I - Python Variables.pdf",
       "category": "pdf"
     },
@@ -9,11 +13,23 @@
       "category": "python"
     },
     {
+      "file": "Code-1-Python-Variables.ipynb",
+      "category": "python"
+    },
+    {
       "file": "II - Data Types.pdf",
       "category": "pdf"
     },
     {
       "file": "Code II-Data Types.ipynb",
+      "category": "python"
+    },
+    {
+      "file": "1-Python-Variables.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "Code-2-Data-Types.ipynb",
       "category": "python"
     }
   ]
