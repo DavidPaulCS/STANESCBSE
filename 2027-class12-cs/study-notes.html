@@ -363,11 +363,9 @@ function getFileIcon(file) {
 
 function getPreviewURL(file) {
   if (file.endsWith(".ipynb")) {
-  window.open(
-    `https://nbviewer.org/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${encodeURIComponent(file)}`,
-    "_blank"
-  );
-}
+    let htmlFile = file.replace(".ipynb", ".html");
+    return "study-notes/" + htmlFile;
+  }
   if (file.endsWith(".py")) {
     return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
   }
