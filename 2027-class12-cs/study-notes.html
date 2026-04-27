@@ -243,7 +243,26 @@ let pinnedFiles = JSON.parse(localStorage.getItem("pinnedFiles")) || [];
 fetch('/STANESCBSE/notes.json')
 .then(res => res.json())
 .then(data => {
-  allNotes = data.notes;
+
+  allNotes = data.notes.sort((a, b) => {
+
+    const startsWithNumber = (str) => /^\d/.test(str);
+
+    const aNum = startsWithNumber(a.file);
+    const bNum = startsWithNumber(b.file);
+
+    // 🔥 Step 1: numbers first
+    if (aNum && !bNum) return -1;
+    if (!aNum && bNum) return 1;
+
+    // 🔥 Step 2: Windows-style sorting
+    return a.file.localeCompare(b.file, undefined, {
+      numeric: true,
+      sensitivity: 'base'
+    });
+
+  });
+
   renderNotes();
 });
 
