@@ -243,7 +243,7 @@ let pinnedFiles = JSON.parse(localStorage.getItem("pinnedFiles")) || [];
 fetch('/STANESCBSE/notes.json')
 .then(res => res.json())
 .then(data => {
-  allNotes = data.notes.reverse();
+  allNotes = data.notes;
   renderNotes();
 });
 
