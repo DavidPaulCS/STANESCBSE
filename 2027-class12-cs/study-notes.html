@@ -362,15 +362,21 @@ function getFileIcon(file) {
 }
 
 function getPreviewURL(file) {
+
+  // 🔥 Python notebooks → open converted HTML
   if (file.endsWith(".ipynb")) {
-    return `https://nbviewer.org/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${file}`;
+    return `2027-class12-cs/study-notes/${file.replace(".ipynb", ".html")}`;
   }
+
+  // Python scripts unchanged
   if (file.endsWith(".py")) {
     return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
   }
+
+  // Everything else unchanged
   return `https://docs.google.com/gview?url=https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${file}&embedded=true`;
 }
-
+  
 function toggleDark() {
   document.body.classList.toggle("dark");
 }
