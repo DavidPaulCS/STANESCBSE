@@ -1,7 +1,23 @@
 {
   "notes": [
     {
+      "file": "I - Python Variables.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "II - Data Types.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "Code I-Python Variables.html",
+      "category": "others"
+    },
+    {
       "file": "readme.md",
+      "category": "others"
+    },
+    {
+      "file": "Code II-Data Types.html",
       "category": "others"
     }
   ]
