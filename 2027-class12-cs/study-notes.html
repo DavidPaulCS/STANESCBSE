@@ -355,20 +355,23 @@ function searchFiles() {
 }
 
 function getFileIcon(file) {
-  if (file.endsWith(".pdf")) return "📄";
-  if (file.endsWith(".py")) return "🐍";
-  if (file.endsWith(".ipynb")) return "📓";
-  return "📁";
+  if (file.endsWith(".pdf")) return "📕";   // textbook
+  if (file.endsWith(".py")) return "📜";    // script file
+
+  // Notebook types
+  if (file.endsWith(".ipynb") || file.endsWith(".html")) return "📒";
+
+  return "📃";
 }
 
 function getPreviewURL(file) {
 
-  // 🔥 HTML notebooks (html viewer)
+  // ✅ HTML files (FIXED PATH)
   if (file.endsWith(".html")) {
-    return `2027-class12-cs/study-notes/${file}`;
+    return `/STANESCBSE/2027-class12-cs/study-notes/${file}`;
   }
 
-  // 🔥 Jupyter notebooks (nbviewer)
+  // Jupyter fallback
   if (file.endsWith(".ipynb")) {
     const encoded = encodeURIComponent(file);
     return `https://nbviewer.org/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${encoded}?flush_cache=true`;
