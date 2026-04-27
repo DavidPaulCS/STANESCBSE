@@ -1,0 +1,36 @@
+name: Convert Notebooks to HTML
+
+on:
+  push:
+    paths:
+      - '2027-class12-cs/study-notes/*.ipynb'
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install nbconvert
+        run: pip install nbconvert
+
+      - name: Convert notebooks to HTML
+        run: |
+          for file in 2027-class12-cs/study-notes/*.ipynb; do
+            jupyter nbconvert --to html "$file"
+          done
+
+      - name: Commit HTML files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add 2027-class12-cs/study-notes/*.html
+          git commit -m "Auto convert notebooks to HTML" || echo "No changes"
+          git push
