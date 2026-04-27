@@ -1,20 +1,8 @@
 {
   "notes": [
     {
-      "file": "I - Python Variables.pdf",
-      "category": "pdf"
-    },
-    {
-      "file": "Code I-Python Variables.ipynb",
-      "category": "python"
-    },
-    {
-      "file": "II - Data Types.pdf",
-      "category": "pdf"
-    },
-    {
-      "file": "Code II-Data Types.ipynb",
-      "category": "python"
+      "file": "readme.md",
+      "category": "others"
     }
   ]
 }
