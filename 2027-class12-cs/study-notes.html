@@ -363,17 +363,23 @@ function getFileIcon(file) {
 
 function getPreviewURL(file) {
 
-  // 🔥 Python notebooks → open converted HTML
-  if (file.endsWith(".ipynb")) {
-    return `2027-class12-cs/study-notes/${file.replace(".ipynb", ".html")}`;
+  // 🔥 HTML notebooks (html viewer)
+  if (file.endsWith(".html")) {
+    return `2027-class12-cs/study-notes/${file}`;
   }
 
-  // Python scripts unchanged
+  // 🔥 Jupyter notebooks (nbviewer)
+  if (file.endsWith(".ipynb")) {
+    const encoded = encodeURIComponent(file);
+    return `https://nbviewer.org/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${encoded}?flush_cache=true`;
+  }
+
+  // Python scripts
   if (file.endsWith(".py")) {
     return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
   }
 
-  // Everything else unchanged
+  // PDFs
   return `https://docs.google.com/gview?url=https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${file}&embedded=true`;
 }
   
