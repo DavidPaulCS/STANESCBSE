@@ -3,200 +3,89 @@
 <head>
   <title>Study Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
   <style>
-    body {
-      font-family: 'Segoe UI';
-      margin: 0;
-      background: #f1f3f6;
-    }
-
-    .dark {
-      background: #121212;
-      color: white;
-    }
-
-    .header {
-      position: relative;
-      background: linear-gradient(135deg,#2a5298,#1e3c72);
-      color: white;
-      padding: 14px;
-      text-align: center;
-    }
-
-    .header .title {
-      display: block;
-      font-size: 18px;
-      font-weight: 500;
-    }
-
-    .container {
-      padding: 10px;
-      padding-bottom: 70px;
-    }
+    body {font-family:'Segoe UI';margin:0;background:#f1f3f6;}
+    .dark {background:#121212;color:white;}
+    .header {background:linear-gradient(135deg,#2a5298,#1e3c72);color:white;padding:14px;text-align:center;}
+    .header .title {font-size:18px;font-weight:500;}
+    .container {padding:10px;padding-bottom:70px;}
 
     input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 12px;
-      border: none;
-      margin-bottom: 10px;
+      width:100%;padding:10px;border-radius:12px;border:none;
+      margin-bottom:10px;box-sizing:border-box;
     }
 
     .categories {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      margin-bottom: 10px;
+      display:flex;gap:8px;overflow-x:auto;margin-bottom:10px;
     }
 
     .categories button {
-      border: none;
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: #e0e0e0;
-      cursor: pointer;
+      border:none;padding:6px 12px;border-radius:20px;
+      background:#e0e0e0;cursor:pointer;
     }
 
     .categories .active {
-      background: #2a5298;
-      color: white;
+      background:#2a5298;color:white;
     }
 
     .section-title {
-      font-size: 14px;
-      margin: 10px 5px;
-      font-weight: bold;
-      color: #555;
+      font-size:14px;margin:10px 5px;
+      font-weight:bold;color:#555;
     }
 
-    .dark .section-title {
-      color: #bbb;
-    }
+    .dark .section-title {color:#bbb;}
 
     .file {
-      background: white;
-      margin-bottom: 10px;
-      padding: 12px;
-      border-radius: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      background:white;
+      margin-bottom:10px;
+      padding:12px;
+      border-radius:16px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      cursor:pointer;
     }
 
-    .file:active {
-      transform: scale(0.97);
-    }
-
-    .file:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .dark .file {
-      background: #1e1e1e;
-    }
+    .dark .file {background:#1e1e1e;}
 
     .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
     .title {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      font-weight: 500;
-      flex: 1;
+      display:flex;
+      align-items:center;
+      font-size:14px;
+      font-weight:500;
+      flex:1;
     }
 
-    .actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
+    .actions a {
+      color:#2a5298;
+      text-decoration:none;
+      font-size:18px;
     }
 
-    .actions i {
-      cursor: pointer;
-    }
-
-    .active-pin {
-      color: gold;
+    .dark .actions a {
+      color:#9bbcff;
     }
 
     .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: white;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+      position:fixed;
+      bottom:0;
+      width:100%;
+      background:white;
+      display:flex;
+      justify-content:space-around;
+      padding:10px 0;
+      box-shadow:0 -2px 6px rgba(0,0,0,0.1);
     }
 
-    .dark .bottom-nav {
-      background: #1e1e1e;
-    }
-
-    .bottom-nav i {
-      font-size: 18px;
-    }
-
-    /* 🔥 MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal-content {
-      position: absolute;
-      top: 5%;
-      left: 5%;
-      width: 90%;
-      height: 90%;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      animation: scaleUp 0.3s ease;
-    }
-
-    .modal-content iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes scaleUp {
-      from { transform: scale(0.9); }
-      to { transform: scale(1); }
-    }
+    .dark .bottom-nav {background:#1e1e1e;}
   </style>
 </head>
-
 <body>
 
 <header class="header">
@@ -214,7 +103,6 @@
     <button onclick="filterCategory('docs')">Docs</button>
   </div>
 
-  <div id="pinnedSection"></div>
   <div id="fileList"></div>
 
 </div>
@@ -223,14 +111,8 @@
   <a href="/STANESCBSE/index.html">
     <i class="fas fa-home"></i>
   </a>
-  <div onclick="toggleDark()"><i class="fas fa-moon"></i></div>
-</div>
-
-<!-- 🔥 FULLSCREEN MODAL -->
-<div id="previewModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closePreview()">&times;</span>
-    <iframe id="previewFrame"></iframe>
+  <div onclick="toggleDark()">
+    <i class="fas fa-moon"></i>
   </div>
 </div>
 
@@ -238,7 +120,6 @@
 
 let allNotes = [];
 let currentCategory = "all";
-let pinnedFiles = JSON.parse(localStorage.getItem("pinnedFiles")) || [];
 
 fetch('/STANESCBSE/notes.json')
 .then(res => res.json())
@@ -246,16 +127,12 @@ fetch('/STANESCBSE/notes.json')
 
   allNotes = data.notes.sort((a, b) => {
 
-    const startsWithNumber = (str) => /^\d/.test(str);
+    const aNum = /^\\d/.test(a.file);
+    const bNum = /^\\d/.test(b.file);
 
-    const aNum = startsWithNumber(a.file);
-    const bNum = startsWithNumber(b.file);
-
-    // 🔥 Step 1: numbers first
     if (aNum && !bNum) return -1;
     if (!aNum && bNum) return 1;
 
-    // 🔥 Step 2: Windows-style sorting
     return a.file.localeCompare(b.file, undefined, {
       numeric: true,
       sensitivity: 'base'
@@ -267,10 +144,8 @@ fetch('/STANESCBSE/notes.json')
 });
 
 function renderNotes() {
-  let pinnedContainer = document.getElementById("pinnedSection");
-  let container = document.getElementById("fileList");
 
-  pinnedContainer.innerHTML = "";
+  let container = document.getElementById("fileList");
   container.innerHTML = "";
 
   let notes = allNotes;
@@ -279,18 +154,11 @@ function renderNotes() {
     notes = notes.filter(n => n.category === currentCategory);
   }
 
-  let pinned = notes.filter(n => pinnedFiles.includes(n.file));
-  let others = notes.filter(n => !pinnedFiles.includes(n.file));
+  container.innerHTML = `<div class="section-title">All Notes</div>`;
 
-  if (pinned.length > 0) {
-    pinnedContainer.innerHTML += `<div class="section-title">📌 Pinned</div>`;
-    pinned.forEach(note => pinnedContainer.appendChild(createCard(note)));
-  }
-
-  if (others.length > 0) {
-    container.innerHTML += `<div class="section-title">All Notes</div>`;
-    others.forEach(note => container.appendChild(createCard(note)));
-  }
+  notes.forEach(note => {
+    container.appendChild(createCard(note));
+  });
 }
 
 function createCard(note) {
@@ -300,11 +168,12 @@ function createCard(note) {
 
   let icon = getFileIcon(note.file);
   let cleanName = decodeURIComponent(note.file).replace(/\.[^/.]+$/, "");
-  let previewURL = getPreviewURL(note.file);
 
-  div.onclick = function(e) {
-    if (e.target.tagName === "I" || e.target.tagName === "A") return;
-    openPreview(previewURL);
+  div.onclick = function() {
+    window.open(
+      `/STANESCBSE/2027-class12-cs/study-notes/${encodeURIComponent(note.file)}`,
+      "_blank"
+    );
   };
 
   div.innerHTML = `
@@ -315,10 +184,9 @@ function createCard(note) {
       </div>
 
       <div class="actions">
-        <i class="fas fa-thumbtack ${pinnedFiles.includes(note.file) ? 'active-pin' : ''}"
-           onclick="togglePin('${note.file}')"></i>
-
-        <a href="study-notes/${note.file}" download>
+        <a href="/STANESCBSE/2027-class12-cs/study-notes/${encodeURIComponent(note.file)}"
+           download="${note.file}"
+           onclick="event.stopPropagation();">
           <i class="fas fa-download"></i>
         </a>
       </div>
@@ -328,83 +196,42 @@ function createCard(note) {
   return div;
 }
 
-function openPreview(url) {
-  document.getElementById("previewFrame").src = url;
-  document.getElementById("previewModal").style.display = "block";
-}
-
-function closePreview() {
-  document.getElementById("previewModal").style.display = "none";
-  document.getElementById("previewFrame").src = "";
-}
-
-window.onclick = function(e) {
-  let modal = document.getElementById("previewModal");
-  if (e.target === modal) closePreview();
-};
-
-function togglePin(file) {
-  let index = pinnedFiles.indexOf(file);
-
-  if (index === -1) pinnedFiles.push(file);
-  else pinnedFiles.splice(index, 1);
-
-  localStorage.setItem("pinnedFiles", JSON.stringify(pinnedFiles));
-  renderNotes();
-}
-
 function filterCategory(category) {
+
   currentCategory = category;
 
   document.querySelectorAll(".categories button")
     .forEach(btn => btn.classList.remove("active"));
 
   event.target.classList.add("active");
+
   renderNotes();
 }
 
 function searchFiles() {
+
   let input = document.getElementById("search").value.toLowerCase();
   let files = document.getElementsByClassName("file");
 
   for (let i = 0; i < files.length; i++) {
+
     let text = files[i].innerText.toLowerCase();
-    files[i].style.display = text.includes(input) ? "block" : "none";
+
+    files[i].style.display =
+      text.includes(input) ? "block" : "none";
   }
 }
 
 function getFileIcon(file) {
-  if (file.endsWith(".pdf")) return "📕";   // textbook
-  if (file.endsWith(".py")) return "📜";    // script file
 
-  // Notebook types
-  if (file.endsWith(".ipynb") || file.endsWith(".html")) return "📒";
+  if (file.endsWith(".pdf")) return "📕";
+  if (file.endsWith(".py")) return "📜";
+  if (file.endsWith(".ipynb")) return "📒";
+  if (file.endsWith(".html")) return "📒";
 
   return "📃";
 }
 
-function getPreviewURL(file) {
-
-  // ✅ HTML files (FIXED PATH)
-  if (file.endsWith(".html")) {
-    return `/STANESCBSE/2027-class12-cs/study-notes/${file}`;
-  }
-
-  // Jupyter fallback
-  if (file.endsWith(".ipynb")) {
-    const encoded = encodeURIComponent(file);
-    return `https://nbviewer.org/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${encoded}?flush_cache=true`;
-  }
-
-  // Python scripts
-  if (file.endsWith(".py")) {
-    return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
-  }
-
-  // PDFs
-  return `https://docs.google.com/gview?url=https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${file}&embedded=true`;
-}
-  
 function toggleDark() {
   document.body.classList.toggle("dark");
 }
