@@ -122,10 +122,6 @@
       cursor: pointer;
     }
 
-    .active-pin {
-      color: gold;
-    }
-
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -214,7 +210,6 @@
     <button onclick="filterCategory('docs')">Docs</button>
   </div>
 
-  <div id="pinnedSection"></div>
   <div id="fileList"></div>
 
 </div>
@@ -238,7 +233,6 @@
 
 let allNotes = [];
 let currentCategory = "all";
-let pinnedFiles = JSON.parse(localStorage.getItem("pinnedFiles")) || [];
 
 fetch('/STANESCBSE/notes.json')
 .then(res => res.json())
@@ -267,10 +261,7 @@ fetch('/STANESCBSE/notes.json')
 });
 
 function renderNotes() {
-  let pinnedContainer = document.getElementById("pinnedSection");
   let container = document.getElementById("fileList");
-
-  pinnedContainer.innerHTML = "";
   container.innerHTML = "";
 
   let notes = allNotes;
@@ -279,17 +270,10 @@ function renderNotes() {
     notes = notes.filter(n => n.category === currentCategory);
   }
 
-  let pinned = notes.filter(n => pinnedFiles.includes(n.file));
-  let others = notes.filter(n => !pinnedFiles.includes(n.file));
-
-  if (pinned.length > 0) {
-    pinnedContainer.innerHTML += `<div class="section-title">📌 Pinned</div>`;
-    pinned.forEach(note => pinnedContainer.appendChild(createCard(note)));
-  }
-
-  if (others.length > 0) {
-    container.innerHTML += `<div class="section-title">All Notes</div>`;
-    others.forEach(note => container.appendChild(createCard(note)));
+  if (notes.length > 0) {
+    notes.forEach(note => container.appendChild(createCard(note)));
+  } else {
+    container.innerHTML = `<div class="section-title">No files found</div>`;
   }
 }
 
@@ -301,6 +285,7 @@ function createCard(note) {
   let icon = getFileIcon(note.file);
   let cleanName = decodeURIComponent(note.file).replace(/\.[^/.]+$/, "");
   let previewURL = getPreviewURL(note.file);
+  let downloadURL = getDownloadURL(note.file);
 
   div.onclick = function(e) {
     if (e.target.tagName === "I" || e.target.tagName === "A") return;
@@ -315,22 +300,22 @@ function createCard(note) {
       </div>
 
       <div class="actions">
-
-    <i class="fas fa-thumbtack ${pinnedFiles.includes(note.file) ? "active-pin" : ""}"
-  onclick="event.stopPropagation(); togglePin('${note.file}')">
-      </i>
-
-  <a href="/STANESCBSE/2027-class12-cs/study-notes/${encodeURIComponent(note.file)}"
-     target="_blank"
-     onclick="event.stopPropagation();">
-     <i class="fas fa-download"></i>
-  </a>
-
-</div>
+        <a href="${downloadURL}"
+           download="${note.file}"
+           target="_blank"
+           onclick="event.stopPropagation();">
+           <i class="fas fa-download"></i>
+        </a>
+      </div>
     </div>
   `;
 
   return div;
+}
+
+function getDownloadURL(file) {
+  // Direct download link for all file types
+  return `/STANESCBSE/2027-class12-cs/study-notes/${encodeURIComponent(file)}`;
 }
 
 function openPreview(url) {
@@ -347,16 +332,6 @@ window.onclick = function(e) {
   let modal = document.getElementById("previewModal");
   if (e.target === modal) closePreview();
 };
-
-function togglePin(file) {
-  let index = pinnedFiles.indexOf(file);
-
-  if (index === -1) pinnedFiles.push(file);
-  else pinnedFiles.splice(index, 1);
-
-  localStorage.setItem("pinnedFiles", JSON.stringify(pinnedFiles));
-  renderNotes();
-}
 
 function filterCategory(category) {
   currentCategory = category;
@@ -406,8 +381,8 @@ function getPreviewURL(file) {
     return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
   }
 
-  // PDFs
-  return `https://docs.google.com/gview?url=https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${file}&embedded=true`;
+  // PDFs - using direct GitHub Pages URL for better compatibility
+  return `https://docs.google.com/gview?url=https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${encodeURIComponent(file)}&embedded=true`;
 }
   
 function toggleDark() {
