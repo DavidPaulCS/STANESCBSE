@@ -315,13 +315,18 @@ function createCard(note) {
       </div>
 
       <div class="actions">
-        <i class="fas fa-thumbtack ${pinnedFiles.includes(note.file) ? 'active-pin' : ''}"
-           onclick="togglePin('${note.file}')"></i>
 
-        <a href="study-notes/${note.file}" download>
-          <i class="fas fa-download"></i>
-        </a>
-      </div>
+    <i class="fas fa-thumbtack ${pinnedFiles.includes(note.file) ? "active-pin" : ""}"
+  onclick="event.stopPropagation(); togglePin('${note.file}')">
+      </i>
+
+  <a href="/STANESCBSE/2027-class12-cs/study-notes/${encodeURIComponent(note.file)}"
+     target="_blank"
+     onclick="event.stopPropagation();">
+     <i class="fas fa-download"></i>
+  </a>
+
+</div>
     </div>
   `;
 
@@ -387,7 +392,7 @@ function getPreviewURL(file) {
 
   // ✅ HTML files (FIXED PATH)
   if (file.endsWith(".html")) {
-    return `/STANESCBSE/2027-class12-cs/study-notes/${file}`;
+    return `/STANESCBSE/2027-class12-cs/study-notes/${encodeURIComponent(file)}`;
   }
 
   // Jupyter fallback
