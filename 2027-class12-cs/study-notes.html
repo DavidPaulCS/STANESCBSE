@@ -122,6 +122,10 @@
       cursor: pointer;
     }
 
+    .active-pin {
+      color: gold;
+    }
+
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -210,6 +214,7 @@
     <button onclick="filterCategory('docs')">Docs</button>
   </div>
 
+  <div id="pinnedSection"></div>
   <div id="fileList"></div>
 
 </div>
@@ -233,10 +238,7 @@
 
 let allNotes = [];
 let currentCategory = "all";
-
-// Base URL for your files - update this if your path is different
-const BASE_URL = '/STANESCBSE/2027-class12-cs/study-notes/';
-const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/';
+let pinnedFiles = JSON.parse(localStorage.getItem("pinnedFiles")) || [];
 
 fetch('/STANESCBSE/notes.json')
 .then(res => res.json())
@@ -265,7 +267,10 @@ fetch('/STANESCBSE/notes.json')
 });
 
 function renderNotes() {
+  let pinnedContainer = document.getElementById("pinnedSection");
   let container = document.getElementById("fileList");
+
+  pinnedContainer.innerHTML = "";
   container.innerHTML = "";
 
   let notes = allNotes;
@@ -274,10 +279,17 @@ function renderNotes() {
     notes = notes.filter(n => n.category === currentCategory);
   }
 
-  if (notes.length > 0) {
-    notes.forEach(note => container.appendChild(createCard(note)));
-  } else {
-    container.innerHTML = `<div class="section-title">No files found</div>`;
+  let pinned = notes.filter(n => pinnedFiles.includes(n.file));
+  let others = notes.filter(n => !pinnedFiles.includes(n.file));
+
+  if (pinned.length > 0) {
+    pinnedContainer.innerHTML += `<div class="section-title">📌 Pinned</div>`;
+    pinned.forEach(note => pinnedContainer.appendChild(createCard(note)));
+  }
+
+  if (others.length > 0) {
+    container.innerHTML += `<div class="section-title">All Notes</div>`;
+    others.forEach(note => container.appendChild(createCard(note)));
   }
 }
 
@@ -288,20 +300,11 @@ function createCard(note) {
 
   let icon = getFileIcon(note.file);
   let cleanName = decodeURIComponent(note.file).replace(/\.[^/.]+$/, "");
-  
-  // Get different URLs for different actions
   let previewURL = getPreviewURL(note.file);
-  let downloadURL = getDownloadURL(note.file);
 
-  // Click on file card opens preview
   div.onclick = function(e) {
     if (e.target.tagName === "I" || e.target.tagName === "A") return;
-    if (previewURL) {
-      openPreview(previewURL);
-    } else {
-      // If no preview available, download instead
-      window.open(downloadURL, '_blank');
-    }
+    openPreview(previewURL);
   };
 
   div.innerHTML = `
@@ -312,51 +315,17 @@ function createCard(note) {
       </div>
 
       <div class="actions">
-        <a href="${downloadURL}"
-           download="${note.file}"
-           onclick="event.stopPropagation();">
-           <i class="fas fa-download"></i>
+        <i class="fas fa-thumbtack ${pinnedFiles.includes(note.file) ? 'active-pin' : ''}"
+           onclick="togglePin('${note.file}')"></i>
+
+        <a href="study-notes/${note.file}" download>
+          <i class="fas fa-download"></i>
         </a>
       </div>
     </div>
   `;
 
   return div;
-}
-
-function getDownloadURL(file) {
-  // Direct file URL for download
-  // Using GitHub Pages URL for all files
-  const encodedFile = encodeURIComponent(file);
-  return `https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${encodedFile}`;
-}
-
-function getPreviewURL(file) {
-  const encodedFile = encodeURIComponent(file);
-  
-  // For PDFs - use Google Docs viewer
-  if (file.endsWith(".pdf")) {
-    const pdfUrl = `https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${encodedFile}`;
-    return `https://docs.google.com/gview?url=${encodeURIComponent(pdfUrl)}&embedded=true`;
-  }
-  
-  // For HTML files - direct view
-  if (file.endsWith(".html")) {
-    return `https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${encodedFile}`;
-  }
-
-  // For Jupyter notebooks - use nbviewer
-  if (file.endsWith(".ipynb")) {
-    return `https://nbviewer.org/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${encodedFile}?flush_cache=true`;
-  }
-
-  // For Python files - show raw content
-  if (file.endsWith(".py")) {
-    return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
-  }
-
-  // For other files, just return the direct URL
-  return `https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${encodedFile}`;
 }
 
 function openPreview(url) {
@@ -373,6 +342,16 @@ window.onclick = function(e) {
   let modal = document.getElementById("previewModal");
   if (e.target === modal) closePreview();
 };
+
+function togglePin(file) {
+  let index = pinnedFiles.indexOf(file);
+
+  if (index === -1) pinnedFiles.push(file);
+  else pinnedFiles.splice(index, 1);
+
+  localStorage.setItem("pinnedFiles", JSON.stringify(pinnedFiles));
+  renderNotes();
+}
 
 function filterCategory(category) {
   currentCategory = category;
@@ -395,10 +374,35 @@ function searchFiles() {
 }
 
 function getFileIcon(file) {
-  if (file.endsWith(".pdf")) return "📕";
-  if (file.endsWith(".py")) return "📜";
+  if (file.endsWith(".pdf")) return "📕";   // textbook
+  if (file.endsWith(".py")) return "📜";    // script file
+
+  // Notebook types
   if (file.endsWith(".ipynb") || file.endsWith(".html")) return "📒";
+
   return "📃";
+}
+
+function getPreviewURL(file) {
+
+  // ✅ HTML files (FIXED PATH)
+  if (file.endsWith(".html")) {
+    return `/STANESCBSE/2027-class12-cs/study-notes/${file}`;
+  }
+
+  // Jupyter fallback
+  if (file.endsWith(".ipynb")) {
+    const encoded = encodeURIComponent(file);
+    return `https://nbviewer.org/github/DavidPaulCS/STANESCBSE/blob/main/2027-class12-cs/study-notes/${encoded}?flush_cache=true`;
+  }
+
+  // Python scripts
+  if (file.endsWith(".py")) {
+    return `https://raw.githubusercontent.com/DavidPaulCS/STANESCBSE/main/2027-class12-cs/study-notes/${file}`;
+  }
+
+  // PDFs
+  return `https://docs.google.com/gview?url=https://davidpaulcs.github.io/STANESCBSE/2027-class12-cs/study-notes/${file}&embedded=true`;
 }
   
 function toggleDark() {
