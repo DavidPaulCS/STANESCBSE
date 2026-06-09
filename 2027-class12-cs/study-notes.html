@@ -304,7 +304,7 @@ function createCard(note) {
 
   div.onclick = function(e) {
     if (e.target.tagName === "I" || e.target.tagName === "A") return;
-    window.open(previewURL, "_blank");
+    window.open(previewURL);
   };
 
   div.innerHTML = `
