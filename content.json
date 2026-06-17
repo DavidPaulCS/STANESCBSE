@@ -1,0 +1,94 @@
+{
+  "classes": [
+    {
+      "id": "2027-class12-cs",
+      "display": "2027 - Class 12 Computer Science",
+      "year": "2027",
+      "class": "12",
+      "subject": "cs",
+      "icon": "🎓",
+      "sections": [
+        {
+          "id": "study-notes",
+          "display": "Study Notes",
+          "icon": "📘"
+        },
+        {
+          "id": "practice-programs",
+          "display": "Practice Programs & Worksheets",
+          "icon": "💻"
+        },
+        {
+          "id": "practical-files",
+          "display": "Practical Files",
+          "icon": "📂"
+        },
+        {
+          "id": "general-docs",
+          "display": "General Docs",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "id": "2027-class12-ip",
+      "display": "2027 - Class 12 Informatics Practices",
+      "year": "2027",
+      "class": "12",
+      "subject": "ip",
+      "icon": "🎓",
+      "sections": [
+        {
+          "id": "study-notes",
+          "display": "Study Notes",
+          "icon": "📘"
+        },
+        {
+          "id": "practice-programs",
+          "display": "Practice Programs & Worksheets",
+          "icon": "💻"
+        },
+        {
+          "id": "practical-files",
+          "display": "Practical Files",
+          "icon": "📂"
+        },
+        {
+          "id": "general-docs",
+          "display": "General Docs",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "id": "2027-class11-cs",
+      "display": "2027 - Class 11 Computer Science",
+      "year": "2027",
+      "class": "11",
+      "subject": "cs",
+      "icon": "🎓",
+      "sections": [
+        {
+          "id": "study-notes",
+          "display": "Study Notes",
+          "icon": "📘"
+        },
+        {
+          "id": "practice-programs",
+          "display": "Practice Programs & Worksheets",
+          "icon": "💻"
+        },
+        {
+          "id": "practical-files",
+          "display": "Practical Files",
+          "icon": "📂"
+        },
+        {
+          "id": "general-docs",
+          "display": "General Docs",
+          "icon": "📄"
+        }
+      ]
+    }
+  ]
+}
