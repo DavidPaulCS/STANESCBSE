@@ -1,20 +1,12 @@
 {
   "files": [
     {
-      "file": "Code 1-Python Variables.html",
-      "category": "python"
-    },
-    {
       "file": "Code 2-Data Types.html",
       "category": "python"
     },
     {
       "file": "Python Variables.pdf",
       "category": "pdf"
-    },
-    {
-      "file": "files.json",
-      "category": "others"
     }
   ]
 }
