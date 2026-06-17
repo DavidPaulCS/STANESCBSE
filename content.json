@@ -1,94 +1,25 @@
 {
-  "classes": [
+  "files": [
     {
-      "id": "2027-class12-cs",
-      "display": "2027 - Class 12 Computer Science",
-      "year": "2027",
-      "class": "12",
-      "subject": "cs",
-      "icon": "🎓",
-      "sections": [
-        {
-          "id": "study-notes",
-          "display": "Study Notes",
-          "icon": "📘"
-        },
-        {
-          "id": "practice-programs",
-          "display": "Practice Programs & Worksheets",
-          "icon": "💻"
-        },
-        {
-          "id": "practical-files",
-          "display": "Practical Files",
-          "icon": "📂"
-        },
-        {
-          "id": "general-docs",
-          "display": "General Docs",
-          "icon": "📄"
-        }
-      ]
+      "class": "2027-class12-cs",
+      "section": "study-notes",
+      "file": "2 - Data Types.pdf",
+      "path": "2027-class12-cs/study-notes/2 - Data Types.pdf",
+      "category": "pdf"
     },
     {
-      "id": "2027-class12-ip",
-      "display": "2027 - Class 12 Informatics Practices",
-      "year": "2027",
-      "class": "12",
-      "subject": "ip",
-      "icon": "🎓",
-      "sections": [
-        {
-          "id": "study-notes",
-          "display": "Study Notes",
-          "icon": "📘"
-        },
-        {
-          "id": "practice-programs",
-          "display": "Practice Programs & Worksheets",
-          "icon": "💻"
-        },
-        {
-          "id": "practical-files",
-          "display": "Practical Files",
-          "icon": "📂"
-        },
-        {
-          "id": "general-docs",
-          "display": "General Docs",
-          "icon": "📄"
-        }
-      ]
+      "class": "2027-class12-cs",
+      "section": "study-notes",
+      "file": "Code 2-Data Types.html",
+      "path": "2027-class12-cs/study-notes/Code 2-Data Types.html",
+      "category": "python"
     },
     {
-      "id": "2027-class11-cs",
-      "display": "2027 - Class 11 Computer Science",
-      "year": "2027",
-      "class": "11",
-      "subject": "cs",
-      "icon": "🎓",
-      "sections": [
-        {
-          "id": "study-notes",
-          "display": "Study Notes",
-          "icon": "📘"
-        },
-        {
-          "id": "practice-programs",
-          "display": "Practice Programs & Worksheets",
-          "icon": "💻"
-        },
-        {
-          "id": "practical-files",
-          "display": "Practical Files",
-          "icon": "📂"
-        },
-        {
-          "id": "general-docs",
-          "display": "General Docs",
-          "icon": "📄"
-        }
-      ]
+      "class": "2027-class12-cs",
+      "section": "study-notes",
+      "file": "Code 1-Python Variables.html",
+      "path": "2027-class12-cs/study-notes/Code 1-Python Variables.html",
+      "category": "python"
     }
   ]
 }
