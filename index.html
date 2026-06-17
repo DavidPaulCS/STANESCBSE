@@ -174,44 +174,62 @@
   <input type="text" id="search" onkeyup="searchContent()" placeholder="🔍 Search class or subject...">
 </div>
 
-<div class="container">
-
-  <div class="card">
-    <h2>🎓 2027 - Class 12 Computer Science</h2>
-    <div class="links">
-      <a href="2027-class12-cs/study-notes.html">📘 Study Notes <span>›</span></a>
-      <a href="2027-class12-cs/practice-programs.html">💻 Practice Programs & Worksheets <span>›</span></a>
-      <a href="2027-class12-cs/practical-files.html">📂 Practical Files <span>›</span></a>
-      <a href="2027-class12-cs/general-docs.html">📄 General Docs <span>›</span></a>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>🎓 2027 - Class 12 Informatics Practices</h2>
-    <div class="links">
-      <a href="2027-class12-ip/study-notes.html">📘 Study Notes <span>›</span></a>
-      <a href="2027-class12-ip/practice-programs.html">💻 Practice Programs & Worksheets <span>›</span></a>
-      <a href="2027-class12-ip/practical-files.html">📂 Practical Files <span>›</span></a>
-      <a href="2027-class12-ip/general-docs.html">📄 General Docs <span>›</span></a>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>🎓 2027 - Class 11 Computer Science</h2>
-    <div class="links">
-      <a href="2027-class11-cs/study-notes.html">📘 Study Notes <span>›</span></a>
-      <a href="2027-class11-cs/practice-programs.html">💻 Practice Programs & Worksheets <span>›</span></a>
-      <a href="2027-class11-cs/practical-files.html">📂 Practical Files <span>›</span></a>
-      <a href="2027-class11-cs/general-docs.html">📄 General Docs <span>›</span></a>
-    </div>
-  </div>
-
+<div class="container" id="contentContainer">
+  <!-- Will be populated dynamically -->
 </div>
 
-<!-- BOTTOM NAV -->
 <div class="bottom-nav">
   <i class="fas fa-moon" onclick="toggleDark()"></i>
 </div>
+
+<script>
+// Load the content configuration
+fetch('/STANESCBSE/content.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('contentContainer');
+    
+    data.classes.forEach(cls => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      
+      let linksHtml = '';
+      cls.sections.forEach(section => {
+        linksHtml += `
+          <a href="class-viewer.html?class=${cls.id}&section=${section.id}">
+            ${section.icon} ${section.display} <span>›</span>
+          </a>
+        `;
+      });
+      
+      card.innerHTML = `
+        <h2>${cls.icon} ${cls.display}</h2>
+        <div class="links">
+          ${linksHtml}
+        </div>
+      `;
+      
+      container.appendChild(card);
+    });
+  });
+
+function searchContent() {
+  const input = document.getElementById('search').value.toLowerCase();
+  const cards = document.getElementsByClassName('card');
+  
+  for (let card of cards) {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(input) ? 'block' : 'none';
+  }
+}
+
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  const icon = document.querySelector('.bottom-nav i');
+  icon.classList.toggle('fa-moon');
+  icon.classList.toggle('fa-sun');
+}
+</script>
 
 </body>
 </html>
