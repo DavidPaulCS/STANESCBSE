@@ -1,9 +1,13 @@
-name: Generate Notes JSON
+name: Generate Content JSON
 
 on:
   push:
     paths:
-      - '2027-class12-cs/study-notes/**'
+      - '**/study-notes/**'
+      - '**/practice-programs/**'
+      - '**/practical-files/**'
+      - '**/general-docs/**'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,37 +19,79 @@ jobs:
       - name: Generate JSON
         run: |
           python3 <<EOF
-          import os, json
-
-          folder = "2027-class12-cs/study-notes"
-          notes = []
-
-          for file in os.listdir(folder):
-              if file.startswith("."):
-                  continue
-
-              if file.endswith(".pdf"):
-                  category = "pdf"
-              elif file.endswith(".py") or file.endswith(".ipynb") or file.endswith(".html"):
-                  category = "python"
-              elif file.endswith(".doc") or file.endswith(".docx"):
-                  category = "docs"
-              else:
-                  category = "others"
-
-              notes.append({
-                  "file": file,
-                  "category": category
-              })
-
-          with open("notes.json", "w") as f:
-              json.dump({"notes": notes}, f, indent=2)
+          import os, json, glob
+          
+          # Base folders to scan
+          base_patterns = [
+              "2027-class*-*/study-notes",
+              "2027-class*-*/practice-programs",
+              "2027-class*-*/practical-files",
+              "2027-class*-*/general-docs"
+          ]
+          
+          all_content = {"files": []}
+          
+          # Get all matching directories
+          for pattern in base_patterns:
+              for folder in glob.glob(pattern):
+                  if not os.path.isdir(folder):
+                      continue
+                  
+                  # Extract path components
+                  parts = folder.split('/')
+                  class_id = parts[0]  # e.g., "2027-class12-cs"
+                  section = parts[1]   # e.g., "study-notes"
+                  
+                  # Scan files in this folder
+                  for file in os.listdir(folder):
+                      if file.startswith('.'):
+                          continue
+                      
+                      # Determine category based on extension
+                      if file.endswith('.pdf'):
+                          category = 'pdf'
+                      elif file.endswith('.py') or file.endswith('.ipynb') or file.endswith('.html'):
+                          category = 'python'
+                      elif file.endswith('.doc') or file.endswith('.docx'):
+                          category = 'docs'
+                      else:
+                          category = 'others'
+                      
+                      all_content["files"].append({
+                          "class": class_id,
+                          "section": section,
+                          "file": file,
+                          "path": f"{folder}/{file}",
+                          "category": category
+                      })
+          
+          # Write the JSON file
+          with open('content.json', 'w') as f:
+              json.dump(all_content, f, indent=2)
+          
+          # Also generate individual section JSON files
+          for class_id in set([item["class"] for item in all_content["files"]]):
+              for section in set([item["section"] for item in all_content["files"] if item["class"] == class_id]):
+                  section_files = [
+                      {"file": item["file"], "category": item["category"]} 
+                      for item in all_content["files"] 
+                      if item["class"] == class_id and item["section"] == section
+                  ]
+                  
+                  # Sort files
+                  section_files.sort(key=lambda x: x["file"])
+                  
+                  section_dir = f"{class_id}/{section}"
+                  os.makedirs(section_dir, exist_ok=True)
+                  
+                  with open(f"{section_dir}/files.json", 'w') as f:
+                      json.dump({"files": section_files}, f, indent=2)
           EOF
 
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add notes.json
-          git commit -m "Auto update notes.json" || echo "No changes"
+          git add content.json */**/files.json
+          git commit -m "Auto update content JSON" || echo "No changes"
           git push
