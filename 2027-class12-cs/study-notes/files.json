@@ -1,6 +1,18 @@
 {
   "files": [
     {
+      "file": "Data File Handling in Python.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "Data Types.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "Getting Started with Python.pdf",
+      "category": "pdf"
+    },
+    {
       "file": "Python Variables.pdf",
       "category": "pdf"
     }
