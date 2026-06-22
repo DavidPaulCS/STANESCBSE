@@ -1,6 +1,18 @@
 {
   "files": [
     {
+      "file": "Code-Data Types.html",
+      "category": "python"
+    },
+    {
+      "file": "Code-Functions.html",
+      "category": "python"
+    },
+    {
+      "file": "Code-Python Variables.html",
+      "category": "python"
+    },
+    {
       "file": "Data File Handling in Python.pdf",
       "category": "pdf"
     },
