@@ -1,6 +1,22 @@
 {
   "files": [
     {
+      "file": "1-Getting Started with Python.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "2-Python Variables.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "3-Data Types & Built-in Functions.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "4-Python Fundamentals.pdf",
+      "category": "pdf"
+    },
+    {
       "file": "Code-Data File Handling.html",
       "category": "python"
     },
@@ -22,6 +38,10 @@
     },
     {
       "file": "Functions in Python.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "SQL Notes.pdf",
       "category": "pdf"
     }
   ]
