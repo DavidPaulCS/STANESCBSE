@@ -1,299 +1,426 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Stanes CBSE | Computer Science | Informatics Practices</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <style>
-    body {font-family:'Segoe UI';margin:0;background:#f1f3f6;}
-    .dark {background:#121212;color:white;}
-    .dark .file {background:#1e1e1e;}
-    .dark .bottom-nav {background:#1e1e1e;}
-    
-    .header {
-      background:linear-gradient(135deg,#2a5298,#1e3c72);
-      color:white;
-      padding:14px;
-      text-align:center;
-    }
-    .header .title {font-size:18px;font-weight:500;}
-    .header .subtitle {font-size:14px;opacity:0.9;}
-    
-    .container {padding:10px;padding-bottom:70px;}
-    input {
-      width:100%;padding:10px;border-radius:12px;border:none;
-      margin-bottom:10px;box-sizing:border-box;
-    }
-    .categories {
-      display:flex;gap:8px;overflow-x:auto;margin-bottom:10px;
-    }
-    .categories button {
-      border:none;padding:6px 12px;border-radius:20px;
-      background:#e0e0e0;cursor:pointer;white-space:nowrap;
-    }
-    .categories .active {
-      background:#2a5298;color:white;
-    }
-    .section-title {
-      font-size:14px;margin:10px 5px;
-      font-weight:bold;color:#555;
-    }
-    .dark .section-title {color:#bbb;}
-    
-    .file {
-      background:white;
-      margin-bottom:10px;
-      padding:12px;
-      border-radius:16px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.08);
-      cursor:pointer;
-    }
-    .file .top {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .file .title {
-      display:flex;
-      align-items:center;
-      font-size:14px;
-      font-weight:500;
-      flex:1;
-    }
-    .file .actions a {
-      color:#2a5298;
-      text-decoration:none;
-      font-size:18px;
-    }
-    .dark .file .actions a {color:#9bbcff;}
-    
-    .bottom-nav {
-      position:fixed;
-      bottom:0;
-      width:100%;
-      background:white;
-      display:flex;
-      justify-content:space-around;
-      padding:10px 0;
-      box-shadow:0 -2px 6px rgba(0,0,0,0.1);
-    }
-    .dark .bottom-nav {background:#1e1e1e;}
-    .bottom-nav a {color:inherit;text-decoration:none;}
-    
-    .back-link {
-      color:white;
-      text-decoration:none;
-      font-size:18px;
-      margin-right:10px;
-    }
-    .debug-info {
-      background:#f0f0f0;
-      padding:10px;
-      margin:10px 0;
-      border-radius:8px;
-      font-size:12px;
-      color:#333;
-    }
-    .dark .debug-info {
-      background:#2a2a2a;
-      color:#ccc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resources | David Paul</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="class-viewer.css">
 </head>
+
 <body>
 
-<header class="header">
-  <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
-    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i></a>
-    <div>
-      <div class="title" id="pageTitle">Content</div>
-      <div class="subtitle" id="pageSubtitle"></div>
+<header class="viewer-header">
+    <div class="viewer-navbar">
+
+        <a href="https://davidpaultech.com/" class="viewer-logo">
+            <img src="https://davidpaultech.com/assets/logo.png" alt="David Paul">
+        </a>
+
+        <nav class="viewer-nav" aria-label="Main navigation">
+            <a href="https://davidpaultech.com/">Home</a>
+            <a href="https://davidpaultech.com/about.html">About</a>
+            <a href="https://davidpaultech.com/resources.html" class="active">Resources</a>
+            <a href="https://davidpaultech.com/quiz-arena.html">Stanes Quiz Arena</a>
+            <a href="https://davidpaultech.com/contact.html">Contact</a>
+        </nav>
+
     </div>
-  </div>
 </header>
 
-<div class="container">
-  <input type="text" id="search" placeholder="🔍 Search..." onkeyup="searchFiles()">
-  
-  <div class="categories">
-    <button onclick="filterCategory('all')" class="active">All</button>
-    <button onclick="filterCategory('pdf')">PDFs</button>
-    <button onclick="filterCategory('python')">Python</button>
-    <button onclick="filterCategory('docs')">Docs</button>
-    <button onclick="filterCategory('others')">Others</button>
-  </div>
-  
-  <div id="fileList"></div>
-</div>
+<main>
 
-<div class="bottom-nav">
-  <a href="index.html"><i class="fas fa-home"></i></a>
-  <div onclick="toggleDark()"><i class="fas fa-moon"></i></div>
-</div>
+    <section class="viewer-hero">
+        <div class="viewer-hero-inner">
+
+            <a href="https://davidpaultech.com/resources.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Resources
+            </a>
+
+            <div class="viewer-label">STUDY RESOURCES</div>
+
+            <h1 id="pageTitle">Loading...</h1>
+
+            <p id="pageSubtitle">
+                Preparing your learning resources...
+            </p>
+
+        </div>
+    </section>
+
+    <section class="viewer-content">
+
+        <div class="viewer-container">
+
+            <div class="toolbar">
+
+                <div class="filter-group" aria-label="File type filters">
+                    <button class="filter-btn active" data-category="all">
+                        All
+                    </button>
+                    <button class="filter-btn" data-category="pdf">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        PDFs
+                    </button>
+                    <button class="filter-btn" data-category="python">
+                        <i class="fa-brands fa-python"></i>
+                        Python
+                    </button>
+                    <button class="filter-btn" data-category="doc">
+                        <i class="fa-regular fa-file-word"></i>
+                        Docs
+                    </button>
+                    <button class="filter-btn" data-category="other">
+                        Others
+                    </button>
+                </div>
+
+                <div class="file-count" id="fileCount">
+                    Loading...
+                </div>
+
+            </div>
+
+            <div class="viewer-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="search"
+                    id="fileSearch"
+                    placeholder="Search resources..."
+                    aria-label="Search resources">
+                <button id="clearSearch" type="button" aria-label="Clear search">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="statusMessage" class="status-message">
+                Loading resources...
+            </div>
+
+            <div id="fileGrid" class="file-grid"></div>
+
+            <div id="emptyState" class="empty-state" hidden>
+                <div class="empty-icon">
+                    <i class="fa-regular fa-folder-open"></i>
+                </div>
+                <h2>No resources found</h2>
+                <p>Try another filter or search term.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="viewer-footer">
+
+    <div class="viewer-footer-container">
+
+        <a href="https://davidpaultech.com/" class="viewer-footer-logo">
+            <img src="https://davidpaultech.com/assets/footer-logo.png" alt="David Paul">
+        </a>
+
+        <nav class="viewer-footer-nav">
+            <a href="https://davidpaultech.com/">Home</a>
+            <span>|</span>
+            <a href="https://davidpaultech.com/about.html">About</a>
+            <span>|</span>
+            <a href="https://davidpaultech.com/resources.html">Resources</a>
+            <span>|</span>
+            <a href="https://davidpaultech.com/quiz-arena.html">Stanes Quiz Arena</a>
+            <span>|</span>
+            <a href="https://davidpaultech.com/contact.html">Contact</a>
+        </nav>
+
+        <div class="viewer-footer-copyright">
+            © 2026 David Paul. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
 
 <script>
+const GITHUB_BASE = "https://davidpaulcs.github.io/STANESCBSE/";
+
+const params = new URLSearchParams(window.location.search);
+
+const classId = params.get("class") || "2027-class12-cs";
+const sectionId = params.get("section") || "study-notes";
+
+const pageTitle = document.getElementById("pageTitle");
+const pageSubtitle = document.getElementById("pageSubtitle");
+const fileGrid = document.getElementById("fileGrid");
+const fileCount = document.getElementById("fileCount");
+const statusMessage = document.getElementById("statusMessage");
+const emptyState = document.getElementById("emptyState");
+const fileSearch = document.getElementById("fileSearch");
+const clearSearch = document.getElementById("clearSearch");
+
 let allFiles = [];
-let currentCategory = "all";
+let activeCategory = "all";
 
-// Auto-detect base path
-const basePath = window.location.pathname.includes('/STANESCBSE/') 
-  ? '/STANESCBSE/' 
-  : '/';
+const sectionNames = {
+    "study-notes": "Study Notes",
+    "practice-programs": "Worksheets, QPs, Practice Programs",
+    "practical-files": "Practical Files",
+    "general-docs": "General Docs"
+};
 
-// Get parameters from URL
-const urlParams = new URLSearchParams(window.location.search);
-const classId = urlParams.get('class') || '2027-class12-cs';
-const section = urlParams.get('section') || 'study-notes';
-
-console.log('Loading files from:', `${basePath}${classId}/${section}/files.json`);
-
-// Load the JSON file for this section
-fetch(`${basePath}${classId}/${section}/files.json`)
-  .then(res => {
-    console.log('Response status:', res.status);
-    if (!res.ok) throw new Error(`HTTP ${res.status}: files.json not found`);
-    return res.json();
-  })
-  .then(data => {
-    console.log('Loaded data:', data);
-    console.log('Number of files:', data.files ? data.files.length : 0);
-    
-    allFiles = data.files || [];
-    
-    // Update page title
-    const displayName = getDisplayName(classId, section);
-    document.getElementById('pageTitle').textContent = displayName.title;
-    document.getElementById('pageSubtitle').textContent = displayName.subtitle;
-    
-    renderFiles();
-  })
-  .catch(error => {
-    console.error('Error loading files:', error);
-    document.getElementById('fileList').innerHTML = `
-      <div style="text-align:center;padding:20px;color:#666;">
-        <p>⚠️ Error loading files</p>
-        <p style="font-size:14px;">${error.message}</p>
-        <p style="font-size:12px;margin-top:10px;color:#999;">
-          Tried to load: ${basePath}${classId}/${section}/files.json
-        </p>
-      </div>
-    `;
-  });
-
-function getDisplayName(classId, section) {
-  const parts = classId.split('-');
-  const year = parts[0];
-  const classNum = parts[1].replace('class', '');
-  const subject = parts[2].toUpperCase();
-  
-  const sectionNames = {
-    'study-notes': 'Study Notes',
-    'practice-programs': 'Worksheets, QPs, Practice Programs',
-    'practical-files': 'Practical Files',
-    'general-docs': 'General Docs'
-  };
-  
-  const sectionDisplay = sectionNames[section] || section;
-  
-  return {
-    title: `${sectionDisplay}`,
-    subtitle: `${year} - Class ${classNum} ${subject}`
-  };
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
-function renderFiles() {
-  let container = document.getElementById('fileList');
-  container.innerHTML = '';
-  
-  let files = allFiles;
-  
-  if (currentCategory !== 'all') {
-    files = files.filter(f => f.category === currentCategory);
-  }
-  
-  console.log('Rendering files:', files.length, 'filtered from', allFiles.length);
-  
-  if (files.length === 0) {
-    container.innerHTML = `
-      <div style="text-align:center;padding:20px;color:#666;">
-        <p>📂 No files found${currentCategory !== 'all' ? ` in category "${currentCategory}"` : ''}</p>
-        <p style="font-size:14px;">Total files in all categories: ${allFiles.length}</p>
-        ${allFiles.length > 0 ? `<div class="debug-info">All files: ${allFiles.map(f => f.file).join(', ')}</div>` : ''}
-      </div>
-    `;
-    return;
-  }
-  
-  container.innerHTML = `<div class="section-title">${files.length} files</div>`;
-  
-  files.forEach(file => {
-    container.appendChild(createCard(file));
-  });
+function getDisplayName(id) {
+    const match = id.match(/^(\d{4})-class(\d+)-(.+)$/i);
+
+    if (!match) {
+        return id;
+    }
+
+    const year = match[1];
+    const grade = match[2];
+    const subject = match[3].toLowerCase();
+
+    const subjectName = {
+        cs: "Computer Science",
+        ip: "Informatics Practices"
+    }[subject] || subject.toUpperCase();
+
+    return `${year} - Class ${grade} ${subjectName}`;
 }
 
-function createCard(file) {
-  const div = document.createElement('div');
-  div.className = 'file';
-  
-  const icon = getFileIcon(file.file);
-  const cleanName = decodeURIComponent(file.file).replace(/\.[^/.]+$/, '');
-  
-  div.onclick = function() {
-    window.open(
-      `${basePath}${classId}/${section}/${encodeURIComponent(file.file)}`,
-      '_blank'
-    );
-  };
-  
-  div.innerHTML = `
-    <div class="top">
-      <div class="title">
-        <span style="margin-right:8px;">${icon}</span>
-        ${cleanName}
-      </div>
-      <div class="actions">
-        <a href="${basePath}${classId}/${section}/${encodeURIComponent(file.file)}"
-           download="${file.file}"
-           onclick="event.stopPropagation();">
-          <i class="fas fa-download"></i>
-        </a>
-      </div>
-    </div>
-  `;
-  
-  return div;
+function getFileType(file) {
+    const name = String(file.file || "").toLowerCase();
+    const category = String(file.category || "").toLowerCase();
+
+    if (category === "pdf" || name.endsWith(".pdf")) return "pdf";
+    if (category === "python" || name.endsWith(".py") || name.endsWith(".ipynb") || name.endsWith(".html")) return "python";
+    if (
+        category === "doc" ||
+        category === "docs" ||
+        name.endsWith(".doc") ||
+        name.endsWith(".docx")
+    ) return "doc";
+
+    return "other";
 }
 
 function getFileIcon(file) {
-  if (file.endsWith('.pdf')) return '📕';
-  if (file.endsWith('.py')) return '📜';
-  if (file.endsWith('.ipynb')) return '📒';
-  if (file.endsWith('.html')) return '🌐';
-  if (file.endsWith('.doc') || file.endsWith('.docx')) return '📄';
-  return '📃';
+    const name = String(file.file || "").toLowerCase();
+    const type = getFileType(file);
+
+    if (name.endsWith(".pdf")) return "fa-regular fa-file-pdf";
+    if (name.endsWith(".py")) return "fa-brands fa-python";
+    if (name.endsWith(".ipynb")) return "fa-solid fa-book-open";
+    if (name.endsWith(".html")) return "fa-brands fa-html5";
+    if (type === "doc") return "fa-regular fa-file-word";
+
+    return "fa-regular fa-file-lines";
 }
 
-function filterCategory(category) {
-  currentCategory = category;
-  document.querySelectorAll('.categories button')
-    .forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-  renderFiles();
+function getTypeLabel(file) {
+    const type = getFileType(file);
+
+    return {
+        pdf: "PDF",
+        python: "CODE",
+        doc: "DOCUMENT",
+        other: "FILE"
+    }[type];
 }
 
-function searchFiles() {
-  const input = document.getElementById('search').value.toLowerCase();
-  const files = document.getElementsByClassName('file');
-  
-  for (let file of files) {
-    const text = file.innerText.toLowerCase();
-    file.style.display = text.includes(input) ? 'block' : 'none';
-  }
+function buildFileUrl(fileName) {
+    return GITHUB_BASE +
+        encodeURIComponent(classId) + "/" +
+        encodeURIComponent(sectionId) + "/" +
+        encodeURI(fileName);
 }
 
-function toggleDark() {
-  document.body.classList.toggle('dark');
+function createFileCard(file) {
+    const fileUrl = buildFileUrl(file.file);
+    const icon = getFileIcon(file);
+    const typeLabel = getTypeLabel(file);
+
+    return `
+        <article class="file-card">
+
+            <div class="file-icon">
+                <i class="${icon}"></i>
+            </div>
+
+            <div class="file-details">
+                <h2 title="${escapeHtml(file.file)}">
+                    ${escapeHtml(file.file)}
+                </h2>
+
+                <span class="file-type">
+                    ${typeLabel}
+                </span>
+            </div>
+
+            <div class="file-actions">
+
+                <a
+                    href="${fileUrl}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="open-file"
+                    title="Open resource"
+                    aria-label="Open resource">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+                <a
+                    href="${fileUrl}"
+                    download
+                    class="download-file"
+                    title="Download resource"
+                    aria-label="Download resource">
+                    <i class="fa-solid fa-download"></i>
+                </a>
+
+            </div>
+
+        </article>
+    `;
 }
+
+function renderFiles() {
+    const query = fileSearch.value.trim().toLowerCase();
+
+    const filtered = allFiles.filter(file => {
+
+        const matchesCategory =
+            activeCategory === "all" ||
+            getFileType(file) === activeCategory;
+
+        const matchesSearch =
+            !query ||
+            String(file.file || "").toLowerCase().includes(query);
+
+        return matchesCategory && matchesSearch;
+    });
+
+    fileGrid.innerHTML = filtered.map(createFileCard).join("");
+
+    emptyState.hidden = filtered.length !== 0;
+
+    fileCount.textContent =
+        `${filtered.length} ${filtered.length === 1 ? "resource" : "resources"}`;
+
+    clearSearch.classList.toggle("visible", query.length > 0);
+}
+
+function setActiveFilter(button) {
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    activeCategory = button.dataset.category;
+    renderFiles();
+}
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+    button.addEventListener("click", () => setActiveFilter(button));
+});
+
+fileSearch.addEventListener("input", renderFiles);
+
+clearSearch.addEventListener("click", () => {
+    fileSearch.value = "";
+    renderFiles();
+    fileSearch.focus();
+});
+
+async function loadClassInfo() {
+    try {
+        const response = await fetch(GITHUB_BASE + "content.json", {
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error("Unable to load content.json");
+        }
+
+        const data = await response.json();
+
+        const classData = Array.isArray(data.classes)
+            ? data.classes.find(item => item.id === classId)
+            : null;
+
+        const displayName = classData?.display || getDisplayName(classId);
+        const sectionName =
+            classData?.sections?.find(item => item.id === sectionId)?.display ||
+            sectionNames[sectionId] ||
+            sectionId;
+
+        pageTitle.textContent = displayName;
+        pageSubtitle.textContent = sectionName;
+
+        document.title = `${sectionName} | ${displayName}`;
+
+    } catch (error) {
+        console.error(error);
+
+        pageTitle.textContent = getDisplayName(classId);
+        pageSubtitle.textContent =
+            sectionNames[sectionId] || sectionId;
+    }
+}
+
+async function loadFiles() {
+    try {
+        const filesUrl =
+            GITHUB_BASE +
+            classId + "/" +
+            sectionId + "/files.json";
+
+        const response = await fetch(filesUrl, {
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error(`Unable to load files.json (${response.status})`);
+        }
+
+        const data = await response.json();
+
+        allFiles = Array.isArray(data.files) ? data.files : [];
+
+        statusMessage.hidden = true;
+
+        renderFiles();
+
+    } catch (error) {
+        console.error(error);
+
+        fileGrid.innerHTML = "";
+        fileCount.textContent = "Unable to load";
+
+        statusMessage.classList.add("error");
+        statusMessage.innerHTML = `
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Resources could not be loaded right now.
+            Please check the resource path and try again.
+        `;
+
+        emptyState.hidden = true;
+    }
+}
+
+loadClassInfo();
+loadFiles();
 </script>
 
 </body>
