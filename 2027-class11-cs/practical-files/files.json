@@ -1,3 +1,56 @@
 {
-  "files": []
+  "files": [
+    {
+      "file": "CODE-Common Functions - I.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Common Functions - II.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Conditional Statements.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Data Types Class Workout.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Data Types.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Dynamic Typing.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Input & Output.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Loop Statements.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Python Fundamentals.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Python Variables.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Type Conversion.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-UT-1.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Variables Class Workout.html",
+      "category": "python"
+    }
+  ]
 }
