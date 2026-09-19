@@ -1,3 +1,16 @@
 {
-  "files": []
+  "files": [
+    {
+      "file": "CODE-Data File Handling.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Functions.html",
+      "category": "python"
+    },
+    {
+      "file": "CODE-Stacks.html",
+      "category": "python"
+    }
+  ]
 }
