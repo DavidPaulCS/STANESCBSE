@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS | Computer Networks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background-color: #f4f7f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #2980b9;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        h2 {
+            color: #ffffff;
+            background-color: #2980b9;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        h3 {
+            color: #1a5276;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.25em;
+            border-left: 4px solid #2980b9;
+            padding-left: 12px;
+        }
+
+        h4 {
+            color: #2c3e50;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #1a5276;
+        }
+
+        .definition {
+            background-color: #eaf2f8;
+            border-left: 5px solid #2980b9;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .example {
+            background-color: #fef9e7;
+            border-left: 5px solid #f39c12;
+            padding: 12px 20px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .example strong {
+            color: #d35400;
+        }
+
+        .analogy {
+            background-color: #e8f8f5;
+            border-left: 5px solid #1abc9c;
+            padding: 12px 20px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .analogy strong {
+            color: #16a085;
+        }
+
+        .pros-cons {
+            display: flex;
+            gap: 20px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .pros, .cons {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 18px;
+            border-radius: 6px;
+        }
+
+        .pros {
+            background-color: #e8f8f5;
+            border: 1px solid #1abc9c;
+        }
+
+        .pros strong {
+            color: #16a085;
+        }
+
+        .cons {
+            background-color: #fdedec;
+            border: 1px solid #e74c3c;
+        }
+
+        .cons strong {
+            color: #c0392b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #eaf2f8;
+        }
+
+        .highlight-box {
+            background-color: #fdf2e9;
+            border: 2px dashed #e67e22;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: #d35400;
+        }
+
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            color: #c0392b;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #bdc3c7;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 25px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.25em;
+            }
+
+            .pros-cons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Computer Networks | Class 12 CS</h1>
+
+
+    <!-- ============================================================ -->
+    <!-- PART 1: EVOLUTION OF NETWORKING -->
+    <!-- ============================================================ -->
+
+    <h2>Part 1: Evolution of Networking</h2>
+
+    <h3>1. Introduction to Computer Networks</h3>
+
+    <div class="definition">
+        <strong>Definition:</strong> A <strong>computer network</strong> is a collection of interconnected computers and other devices (like printers, scanners) that can communicate with each other and share resources (like files, printers, and internet connection).
+    </div>
+
+    <h4>Key Advantages:</h4>
+    <ul>
+        <li><strong>Resource Sharing:</strong> Share hardware (printers), software, and data.</li>
+        <li><strong>Communication:</strong> Email, instant messaging, video conferencing.</li>
+        <li><strong>Data Centralization:</strong> Store data on a central server for easy access and backup.</li>
+        <li><strong>Cost Efficiency:</strong> Reduce costs by sharing expensive resources.</li>
+        <li><strong>Reliability:</strong> If one computer fails, others can take over its work.</li>
+    </ul>
+
+    <h3>2. Evolution of Networking</h3>
+
+    <p>The evolution of networking can be traced through three key milestones:</p>
+
+    <h4>a) ARPANET (Advanced Research Projects Agency Network) &mdash; 1969</h4>
+    <ul>
+        <li><strong>What it was:</strong> The world&rsquo;s first operational packet-switching network and the direct predecessor of the Internet.</li>
+        <li><strong>Who created it:</strong> Funded by the U.S. Department of Defense.</li>
+        <li><strong>Purpose:</strong> To create a communication network that could survive a partial outage (e.g., during a war). If one path was destroyed, data could be rerouted through another path.</li>
+        <li><strong>Significance:</strong> It introduced the concept of <strong>packet switching</strong> and the <strong>TCP/IP</strong> protocol suite.</li>
+    </ul>
+
+    <h4>b) NSFNET (National Science Foundation Network) &mdash; 1986</h4>
+    <ul>
+        <li><strong>What it was:</strong> A network created by the National Science Foundation (NSF) to connect supercomputing centers across the U.S. and provide access to researchers.</li>
+        <li><strong>Purpose:</strong> To promote scientific research and education.</li>
+        <li><strong>Significance:</strong> It was a major backbone of the early Internet and helped to popularize it among a wider audience beyond the military. It was eventually decommissioned in 1995, paving the way for commercial Internet service providers (ISPs).</li>
+    </ul>
+
+    <h4>c) INTERNET (INTERconnected NETworks)</h4>
+    <ul>
+        <li><strong>What it is:</strong> The global system of interconnected computer networks that use the Internet protocol suite (TCP/IP) to link devices worldwide. It is a &ldquo;network of networks.&rdquo;</li>
+        <li><strong>How it evolved:</strong> The Internet grew out of ARPANET and NSFNET. The key development was the adoption of <strong>TCP/IP</strong> as the standard communication protocol on January 1, 1983. The invention of the <strong>World Wide Web (WWW)</strong> by Tim Berners-Lee in 1989 made the Internet easily accessible and popular among the general public.</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <!-- PART 2: DATA COMMUNICATION TERMINOLOGIES -->
+    <!-- ============================================================ -->
+
+    <h2>Part 2: Data Communication Terminologies</h2>
+
+    <h3>1. Concept of Communication</h3>
+
+    <div class="definition">
+        <strong>Communication</strong> is the process of exchanging information between two or more entities. In the context of computers, it is the transfer of data from one point to another.
+    </div>
+
+    <h3>2. Components of Data Communication</h3>
+
+    <p>A data communication system has five essential components:</p>
+
+    <ol>
+        <li><strong>Sender:</strong> The device that sends the data. (e.g., a computer, a phone).</li>
+        <li><strong>Receiver:</strong> The device that receives the data. (e.g., a server, another computer).</li>
+        <li><strong>Message:</strong> The actual data or information being communicated. (e.g., text, image, audio, video).</li>
+        <li><strong>Communication Media:</strong> The physical path through which the message travels from sender to receiver. (e.g., cables, radio waves).</li>
+        <li><strong>Protocols:</strong> A set of rules that govern the communication process. Both the sender and receiver must follow the same protocol for successful communication. (e.g., HTTP, TCP/IP).</li>
+    </ol>
+
+    <h3>3. Measuring Capacity of Communication Media</h3>
+
+    <h4>Bandwidth:</h4>
+    <ul>
+        <li><strong>Definition:</strong> The range of frequencies that a communication medium can carry. It is the difference between the highest and lowest frequencies.</li>
+        <li><strong>Unit:</strong> Hertz (Hz), Kilohertz (kHz), Megahertz (MHz), Gigahertz (GHz).</li>
+        <li><strong>Analogy:</strong> Think of it as the width of a highway. A wider highway (more bandwidth) can accommodate more cars (data) at the same time.</li>
+    </ul>
+
+    <h4>Data Transfer Rate:</h4>
+    <ul>
+        <li><strong>Definition:</strong> The amount of data that can be transferred from one point to another in a given amount of time. It is the actual speed of data transmission.</li>
+        <li><strong>Unit:</strong> Bits per second (bps), Kilobits per second (Kbps), Megabits per second (Mbps), Gigabits per second (Gbps).</li>
+        <li><strong>Note:</strong> Bandwidth is a <em>potential</em> capacity, while Data Transfer Rate is the <em>actual</em> speed achieved.</li>
+    </ul>
+
+    <h3>4. IP Address</h3>
+
+    <div class="definition">
+        <strong>Definition:</strong> A unique numerical label assigned to every device connected to a computer network that uses the Internet Protocol for communication.
+    </div>
+
+    <ul>
+        <li><strong>Purpose:</strong> It serves two main functions: host or network interface identification and location addressing.</li>
+        <li><strong>Example:</strong> <code>192.168.1.1</code> (IPv4) or <code>2001:0db8:85a3::8a2e:0370:7334</code> (IPv6).</li>
+    </ul>
+
+    <div class="analogy">
+        <strong>Analogy:</strong> It&rsquo;s like a postal address for your computer on the network.
+    </div>
+
+    <h3>5. Switching Techniques</h3>
+
+    <p>Switching is the method used to establish a connection between a sender and a receiver in a network.</p>
+
+    <h4>Circuit Switching:</h4>
+    <ul>
+        <li><strong>How it works:</strong> A dedicated physical path (circuit) is established between the sender and receiver for the entire duration of the communication.</li>
+    </ul>
+    <div class="analogy">
+        <strong>Analogy:</strong> A traditional telephone call. Once you dial and connect, a dedicated line is reserved for you until you hang up.
+    </div>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Guaranteed data rate</li>
+                <li>No delays</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Inefficient use of resources (the line is idle if no data is being sent)</li>
+                <li>Expensive</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Packet Switching:</h4>
+    <ul>
+        <li><strong>How it works:</strong> The message is broken down into smaller units called <strong>packets</strong>. Each packet is sent independently across the network and may take different paths to reach the destination. The packets are reassembled at the destination.</li>
+    </ul>
+    <div class="analogy">
+        <strong>Analogy:</strong> Sending a book by tearing out its pages and mailing each page in a separate envelope. They might arrive out of order and via different postal routes, but they can be reassembled into the complete book.
+    </div>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Efficient use of network resources</li>
+                <li>More resilient</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Packets can be delayed or lost, requiring reassembly and retransmission</li>
+            </ul>
+        </div>
+    </div>
+    <h3>Difference between Circuit Switching and Packet Switching</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Circuit Switching</th>
+            <th>Packet Switching</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Connection Type</strong></td>
+            <td>A dedicated physical path (circuit) is established before communication begins</td>
+            <td>No dedicated path; data is broken into packets sent independently</td>
+        </tr>
+        <tr>
+            <td><strong>Path</strong></td>
+            <td>Fixed path for the entire duration of communication</td>
+            <td>Each packet may take a different path to reach the destination</td>
+        </tr>
+        <tr>
+            <td><strong>Resource Allocation</strong></td>
+            <td>Resources are reserved for the entire session</td>
+            <td>Resources are shared among all users</td>
+        </tr>
+        <tr>
+            <td><strong>Bandwidth Usage</strong></td>
+            <td>Inefficient &mdash; bandwidth is wasted when no data is being sent</td>
+            <td>Efficient &mdash; bandwidth is utilized only when packets are sent</td>
+        </tr>
+        <tr>
+            <td><strong>Delay</strong></td>
+            <td>Minimal delay once the circuit is established (no routing delay)</td>
+            <td>Variable delay due to routing and queuing at each node</td>
+        </tr>
+        <tr>
+            <td><strong>Order of Delivery</strong></td>
+            <td>Data arrives in order (since path is fixed)</td>
+            <td>Packets may arrive out of order and need reassembly</td>
+        </tr>
+        <tr>
+            <td><strong>Reliability</strong></td>
+            <td>Reliable once connected; no packet loss</td>
+            <td>Less reliable; packets can be lost or delayed</td>
+        </tr>
+        <tr>
+            <td><strong>Cost</strong></td>
+            <td>Expensive (dedicated resources)</td>
+            <td>Cheaper (shared resources)</td>
+        </tr>
+        <tr>
+            <td><strong>Setup Time</strong></td>
+            <td>Requires call setup time before data transfer</td>
+            <td>No setup time required; data can be sent immediately</td>
+        </tr>
+        <tr>
+            <td><strong>Failure Impact</strong></td>
+            <td>If any link in the circuit fails, the entire connection breaks</td>
+            <td>If one path fails, packets can be rerouted through another path</td>
+        </tr>
+        <tr>
+            <td><strong>Example</strong></td>
+            <td>Traditional telephone call (PSTN)</td>
+            <td>Internet communication (email, web browsing, VoIP)</td>
+        </tr>
+        <tr>
+            <td><strong>Best For</strong></td>
+            <td>Real-time voice communication where delay is unacceptable</td>
+            <td>Data communication where efficiency is more important than delay</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="analogy">
+    <strong>Analogy:</strong><br>
+    <strong>Circuit Switching:</strong> A traditional telephone call &mdash; once you dial and connect, a dedicated line is reserved for you until you hang up.<br>
+    <strong>Packet Switching:</strong> Sending a book by tearing out its pages and mailing each page in a separate envelope &mdash; they might arrive out of order and via different routes, but can be reassembled into the complete book.
+</div>
+    <!-- ============================================================ -->
+    <!-- PART 3: TRANSMISSION MEDIA -->
+    <!-- ============================================================ -->
+
+    <h2>Part 3: Transmission Media</h2>
+
+    <p>Transmission media is the physical channel that carries the data signal.</p>
+
+    <h3>1. Wired Communication Media (Guided Media)</h3>
+
+    <h4>Twisted Pair Cable:</h4>
+    <ul>
+        <li><strong>Description:</strong> Consists of two insulated copper wires twisted around each other. The twisting helps to reduce electromagnetic interference (crosstalk).</li>
+        <li><strong>Types:</strong>
+            <ul>
+                <li><strong>Unshielded Twisted Pair (UTP):</strong> Most common, used in Ethernet networks and telephones. (e.g., Cat5, Cat6 cables).</li>
+                <li><strong>Shielded Twisted Pair (STP):</strong> Has a metal foil or braid around the pairs for extra protection from interference. More expensive and harder to install.</li>
+            </ul>
+        </li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Cheap</li>
+                <li>Easy to install</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Low bandwidth</li>
+                <li>Susceptible to interference</li>
+                <li>Short range</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Co-axial Cable:</h4>
+    <ul>
+        <li><strong>Description:</strong> Has a single copper conductor at its center, surrounded by an insulating layer, a braided metal shield, and an outer plastic jacket.</li>
+        <li><strong>Use:</strong> Used for cable TV and older Ethernet networks.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Higher bandwidth than twisted pair</li>
+                <li>Better protection from interference</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Thicker and less flexible than twisted pair</li>
+                <li>More expensive</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Fiber-optic Cable:</h4>
+    <ul>
+        <li><strong>Description:</strong> Uses thin strands of glass or plastic (fibers) to transmit data as pulses of light.</li>
+        <li><strong>Use:</strong> Backbone of the Internet, high-speed LANs, long-distance communication.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Extremely high bandwidth</li>
+                <li>Very long range</li>
+                <li>Immune to electromagnetic interference</li>
+                <li>Very secure</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Expensive</li>
+                <li>Difficult to install and splice</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>2. Wireless Communication Media (Unguided Media)</h3>
+
+    <h4>Radio Waves:</h4>
+    <ul>
+        <li><strong>Description:</strong> Electromagnetic waves with frequencies from 3 kHz to 3 GHz. They can travel long distances and penetrate walls.</li>
+        <li><strong>Use:</strong> AM/FM radio, television, cordless phones, Wi-Fi, Bluetooth.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Can travel long distances</li>
+                <li>Penetrate obstacles</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Susceptible to interference from other radio sources</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Micro Waves:</h4>
+    <ul>
+        <li><strong>Description:</strong> Electromagnetic waves with frequencies from 300 MHz to 300 GHz. They travel in straight lines and require a clear line of sight between the transmitter and receiver.</li>
+        <li><strong>Use:</strong> Satellite communication, microwave ovens, radar.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>High bandwidth</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Requires line-of-sight</li>
+                <li>Affected by weather (rain fade)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Infrared Waves:</h4>
+    <ul>
+        <li><strong>Description:</strong> Electromagnetic waves with frequencies from 300 GHz to 400 THz. They are used for very short-range communication.</li>
+        <li><strong>Use:</strong> TV remote controls, wireless keyboards and mice, some short-range LANs.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Secure (cannot penetrate walls)</li>
+                <li>Inexpensive</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Very short range</li>
+                <li>Requires line-of-sight</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PART 4: NETWORK DEVICES -->
+    <!-- ============================================================ -->
+
+    <h2>Part 4: Network Devices</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Device</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Modem (MOdulator-DEModulator)</strong></td>
+                <td>A device that converts digital signals from a computer into analog signals (modulation) for transmission over telephone lines, and converts incoming analog signals back into digital signals (demodulation).</td>
+            </tr>
+            <tr>
+                <td><strong>Ethernet Card (NIC &mdash; Network Interface Card)</strong></td>
+                <td>A hardware component installed in a computer that allows it to connect to a network. It provides the physical connection (e.g., for an Ethernet cable) and has a unique MAC address.</td>
+            </tr>
+            <tr>
+                <td><strong>RJ45 (Registered Jack 45)</strong></td>
+                <td>The standard connector used for Ethernet cables (like Cat5/Cat6). It looks like a slightly larger telephone connector.</td>
+            </tr>
+            <tr>
+                <td><strong>Repeater</strong></td>
+                <td>A device that regenerates and amplifies a weak or degraded signal over a long distance, allowing it to travel further without losing quality.</td>
+            </tr>
+            <tr>
+                <td><strong>Hub</strong></td>
+                <td>A basic networking device that connects multiple devices in a LAN. It is a <strong>dumb</strong> device that broadcasts any data it receives to all connected devices, leading to unnecessary traffic and collisions.</td>
+            </tr>
+            <tr>
+                <td><strong>Switch</strong></td>
+                <td>An intelligent networking device that connects multiple devices in a LAN. It learns the MAC addresses of connected devices and forwards data only to the intended recipient, making it more efficient than a hub.</td>
+            </tr>
+            <tr>
+                <td><strong>Router</strong></td>
+                <td>A device that connects different networks together (e.g., your home LAN to the Internet). It uses IP addresses to determine the best path for data packets to travel.</td>
+            </tr>
+            <tr>
+                <td><strong>Gateway</strong></td>
+                <td>A device that acts as a &ldquo;gate&rdquo; between two networks that use different protocols. It translates data from one protocol to another, allowing dissimilar networks to communicate.</td>
+            </tr>
+            <tr>
+                <td><strong>Wi-Fi Card</strong></td>
+                <td>A wireless network interface controller that allows a device to connect to a network using Wi-Fi (Wireless Fidelity).</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- MAC ADDRESS -->
+    <h3>MAC Address (Media Access Control Address)</h3>
+
+    <div class="definition">
+        <strong>MAC Address</strong> stands for <strong>Media Access Control Address</strong>. It is a unique 48-bit (6-byte) hardware address assigned to a Network Interface Card (NIC) by the manufacturer. It is also known as a <strong>physical address</strong> or <strong>hardware address</strong>.
+    </div>
+
+    <h4>Examples of MAC Addresses:</h4>
+    <div class="example">
+        <ul>
+            <li><code>00:1A:2B:3C:4D:5E</code> &mdash; A typical Ethernet NIC</li>
+            <li><code>A4:5E:60:12:34:56</code> &mdash; A Wi-Fi adapter</li>
+            <li><code>00:50:56:C0:00:08</code> &mdash; A VMware virtual machine NIC (note: VMware uses its own OUI)</li>
+            <li><code>3C:5A:B4:9F:1D:22</code> &mdash; A Bluetooth adapter</li>
+        </ul>
+    </div>
+
+    <div class="highlight-box">
+        <strong>MAC vs IP Address:</strong> A MAC address is a permanent physical address (like a fingerprint), while an IP address is a logical address that can change (like a postal address). MAC works at Layer 2, IP works at Layer 3.
+    </div>
+    <!-- REPEATER DISTANCE -->
+<h3>Placement of a Repeater</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Cable Type</th>
+            <th>Maximum Segment Length</th>
+            <th>Purpose of Repeater</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Twisted Pair (UTP)</strong></td>
+            <td><strong>100 metres</strong></td>
+            <td>Used to regenerate the signal and extend the network beyond 100 m</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="highlight-box">
+    <strong>Remember:</strong> In standard Ethernet using twisted-pair cable, a cable segment can be up to <strong>100 metres</strong>. A repeater is used when the network needs to extend beyond this distance.
+</div>
+
+    <!-- DIFFERENCES: HUB vs SWITCH, ROUTER vs GATEWAY -->
+    <h3>Difference between Hub and Switch, Router and Gateway</h3>
+
+    <h4>a) Hub vs Switch</h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Hub</th>
+            <th>Switch</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Function</strong></td>
+            <td>Connects multiple devices in a network</td>
+            <td>Connects multiple devices and forwards data to the intended device</td>
+        </tr>
+        <tr>
+            <td><strong>Data Transmission</strong></td>
+            <td>Sends data to all connected devices</td>
+            <td>Sends data only to the intended device</td>
+        </tr>
+        <tr>
+            <td><strong>Efficiency</strong></td>
+            <td>Less efficient</td>
+            <td>More efficient</td>
+        </tr>
+        <tr>
+                <td><strong>Security</strong></td>
+                <td>Low &mdash; all devices see all traffic</td>
+                <td>High &mdash; traffic is isolated</td>
+            </tr>
+            <tr>
+                <td><strong>Cost</strong></td>
+                <td>Cheaper</td>
+                <td>More expensive</td>
+            </tr>
+        <tr>
+            <td><strong>Usage</strong></td>
+            <td>Used in older or simple networks</td>
+            <td>Commonly used in LANs such as school and office networks</td>
+        </tr>
+    </tbody>
+</table>
+
+    <div class="example">
+        <strong>Example Scenario:</strong> In a school computer lab with 30 computers, if a <strong>Hub</strong> is used, when Computer A sends data to Computer B, all 30 computers receive the data. This wastes bandwidth and causes collisions. If a <strong>Switch</strong> is used, the data goes only to Computer B, making the network faster and more secure.
+    </div>
+    <h4>b) Router vs Gateway</h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Router</th>
+            <th>Gateway</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Function</strong></td>
+            <td>Connects different networks and routes data between them</td>
+            <td>Connects networks that may use different communication protocols</td>
+        </tr>
+        <tr>
+            <td><strong>Main Purpose</strong></td>
+            <td>Determines the appropriate path for data packets</td>
+            <td>Acts as a connection point between different networks or systems</td>
+        </tr>
+        <tr>
+                <td><strong>Complexity</strong></td>
+                <td>Less complex</td>
+                <td>More complex</td>
+            </tr>
+            <tr>
+                <td><strong>Speed</strong></td>
+                <td>Faster</td>
+                <td>Slower (due to protocol conversion)</td>
+            </tr>
+        <tr>
+            <td><strong>Example</strong></td>
+            <td>Connects a home or school LAN to the Internet</td>
+            <td>Connects networks using different protocols</td>
+        </tr>
+    </tbody>
+</table>
+   
+    <div class="example">
+        <strong>Example Scenario (Router):</strong> Your home Wi-Fi router connects your home LAN (using private IPs like 192.168.1.x) to the Internet (using public IPs). It routes packets between these two IP-based networks.<br><br>
+        <strong>Example Scenario (Gateway):</strong> A smart TV may use a gateway to communicate between its home network and a different network or service that uses a different communication protocol.
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- PART 5: NETWORK TOPOLOGIES AND NETWORK TYPES -->
+    <!-- ============================================================ -->
+
+    <h2>Part 5: Network Topologies and Network Types</h2>
+
+    <h3>1. Types of Networks (Based on Geographical Area)</h3>
+
+    <ul>
+        <li><strong>PAN (Personal Area Network):</strong> A network organized around an individual person. Range is typically up to 10 meters. (e.g., Bluetooth connection between a phone and a headset).</li>
+        <li><strong>LAN (Local Area Network):</strong> A network that connects devices within a small, limited area like a home, office, or school. (e.g., your home Wi-Fi network).</li>
+        <li><strong>MAN (Metropolitan Area Network):</strong> A network that spans a city or a large campus. It is larger than a LAN but smaller than a WAN. (e.g., a cable TV network in a city).</li>
+        <li><strong>WAN (Wide Area Network):</strong> A network that spans a large geographical area, such as a country, continent, or the entire world. The Internet is the largest WAN. (e.g., a bank&rsquo;s network connecting its branches across the country).</li>
+    </ul>
+    <h3>2. Range, Examples, Use Cases</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Network Type</th>
+                <th>Full Form</th>
+                <th>Geographical Area Covered</th>
+                <th>Examples</th>
+                <th>Use Case</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>PAN</strong></td>
+                <td>Personal Area Network</td>
+                <td>Very small area around a person (Up to 10 m)</td>
+                <td>Bluetooth headset, smartwatch, wireless keyboard, NFC payment</td>
+                <td>Connecting personal devices around one person</td>
+            </tr>
+            <tr>
+                <td><strong>LAN</strong></td>
+                <td>Local Area Network</td>
+                <td>Typically a building or a campus (Up to 1 km)</td>
+                <td>Home Wi-Fi, school computer lab, office network, college campus</td>
+                <td>Sharing files, printers, and internet within a small area</td>
+            </tr>
+            <tr>
+                <td><strong>MAN</strong></td>
+                <td>Metropolitan Area Network</td>
+                <td>A city or a metropolitan area or a large campus (10 km to 100 km)</td>
+                <td>Cable TV network, city-wide Wi-Fi, bank branches in a city, metro rail network</td>
+                <td>Connecting multiple LANs across a city</td>
+            </tr>
+            <tr>
+                <td><strong>WAN</strong></td>
+                <td>Wide Area Network</td>
+                <td>Large geographical area — countries or worldwide (more than 100 kms)</td>
+                <td>The Internet, national banking network, airline reservation system, mobile phone network</td>
+                <td>Connecting networks across countries and continents</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example">
+        <strong>More Examples with Use Cases:</strong>
+        <ul>
+            <li><strong>PAN:</strong> A person using Bluetooth headphones connected to their Phone via Bluetooth &mdash; use case: listening to music while walking.</li>
+            <li><strong>LAN:</strong> A family connecting their laptop, printer, and smart TV to a home Wi-Fi router &mdash; use case: sharing a printer and streaming movies.</li>
+            <li><strong>MAN:</strong> A city&rsquo;s traffic monitoring system where cameras across the city send data to a central control room &mdash; use case: traffic management.</li>
+            <li><strong>WAN:</strong> A multinational company connecting its offices in India, USA, and UK &mdash; use case: sharing company data and video conferencing across continents.</li>
+        </ul>
+    </div>
+    <h3>3. Networking Topologies</h3>
+
+    <p>Topology refers to the physical or logical arrangement of devices in a network.</p>
+
+    <h4>Bus Topology:</h4>
+    <ul>
+        <li><strong>Layout:</strong> All devices are connected to a single central cable called the &ldquo;backbone&rdquo; or &ldquo;bus.&rdquo;</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Easy to install</li>
+                <li>Requires less cable</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>If the backbone cable fails, the entire network goes down</li>
+                <li>Difficult to troubleshoot</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Star Topology:</h4>
+    <ul>
+        <li><strong>Layout:</strong> All devices are connected to a central device, such as a hub or a switch.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Easy to install and manage</li>
+                <li>If one device or cable fails, only that device is affected</li>
+                <li>Easy to add or remove devices</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>If the central hub/switch fails, the entire network goes down</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Tree Topology:</h4>
+    <ul>
+        <li><strong>Layout:</strong> A hybrid topology that combines characteristics of Bus and Star topologies. It consists of groups of star-configured networks connected to a linear bus backbone cable.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Scalable</li>
+                <li>Easy to manage in segments</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>If the backbone cable fails, the entire network is affected</li>
+            </ul>
+        </div>
+    </div>
+     <!-- TOPOLOGY USE CASES -->
+    <h3>4. Use Case for Topologies</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Topology</th>
+                <th>Preferred Scenario</th>
+                <th>Why?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Bus</strong></td>
+                <td>Small networks with few devices (e.g., 5&ndash;10 computers) where cost is a major concern and network traffic is low</td>
+                <td>Requires least cable, easy to install, cheap</td>
+            </tr>
+            <tr>
+                <td><strong>Star</strong></td>
+                <td>Office LANs, school computer labs, home networks where reliability and easy troubleshooting are important</td>
+                <td>If one device fails, others are unaffected; easy to add/remove devices; easy to diagnose faults</td>
+            </tr>
+            <tr>
+                <td><strong>Tree</strong></td>
+                <td>Large organizations, university campuses, multi-floor buildings where the network needs to be divided into segments</td>
+                <td>Scalable; allows hierarchical grouping of departments; easy to manage segments</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example">
+        <strong>Example Scenarios:</strong>
+        <ul>
+            <li><strong>Bus:</strong> A small cyber caf&eacute; with 6 computers on a tight budget.</li>
+            <li><strong>Star:</strong> A school computer lab with 40 computers connected to a central switch &mdash; if one computer&rsquo;s cable is faulty, only that computer is affected.</li>
+            <li><strong>Tree:</strong> A university with separate departments (Science, Arts, Commerce) each having its own star network, all connected to a central backbone.</li>
+        </ul>
+    </div>
+
+    <!-- BUS VS STAR -->
+    <h3>5. Difference between Bus and Star Topology</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Bus Topology</th>
+                <th>Star Topology</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Layout</strong></td>
+                <td>All devices connected to a single backbone cable</td>
+                <td>All devices connected to a central hub/switch</td>
+            </tr>
+            <tr>
+                <td><strong>Cable Requirement</strong></td>
+                <td>Less cable required</td>
+                <td>More cable required (each device needs its own cable)</td>
+            </tr>
+            <tr>
+                <td><strong>Cost</strong></td>
+                <td>Cheaper</td>
+                <td>More expensive (due to central device and extra cable)</td>
+            </tr>
+            <tr>
+                <td><strong>Failure Impact</strong></td>
+                <td>If backbone cable fails, <strong>entire network</strong> goes down</td>
+                <td>If central hub/switch fails, <strong>entire network</strong> goes down; if one cable fails, only that device is affected</td>
+            </tr>
+            <tr>
+                <td><strong>Troubleshooting</strong></td>
+                <td>Difficult &mdash; fault in backbone affects all</td>
+                <td>Easy &mdash; isolate the faulty cable/device</td>
+            </tr>
+            <tr>
+                <td><strong>Scalability</strong></td>
+                <td>Difficult to add new devices (signal degradation)</td>
+                <td>Easy to add new devices (just connect to hub/switch)</td>
+            </tr>
+            <tr>
+                <td><strong>Data Collision</strong></td>
+                <td>High chance of collisions</td>
+                <td>Low chance of collisions (especially with switch)</td>
+            </tr>
+            <tr>
+                <td><strong>Performance</strong></td>
+                <td>Degrades as more devices are added</td>
+                <td>Consistent performance</td>
+            </tr>
+            <tr>
+                <td><strong>Best For</strong></td>
+                <td>Small, temporary networks</td>
+                <td>Office, school, and home networks</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- ============================================================ -->
+    <!-- PART 6: NETWORK PROTOCOLS -->
+    <!-- ============================================================ -->
+
+    <h2>Part 6: Network Protocols</h2>
+
+    <p>A protocol is a set of rules for communication.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Protocol</th>
+                <th>Full Form</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>HTTP</strong></td>
+                <td>HyperText Transfer Protocol</td>
+                <td>The foundation of data communication for the World Wide Web. It is used to transfer web pages from a web server to a web browser.</td>
+            </tr>
+            <tr>
+                <td><strong>FTP</strong></td>
+                <td>File Transfer Protocol</td>
+                <td>Used for transferring files from one computer to another over a network (e.g., from a client to a server).</td>
+            </tr>
+            <tr>
+                <td><strong>PPP</strong></td>
+                <td>Point-to-Point Protocol</td>
+                <td>A data link protocol used to establish a direct connection between two nodes. It is commonly used for dial-up and DSL Internet connections.</td>
+            </tr>
+            <tr>
+                <td><strong>SMTP</strong></td>
+                <td>Simple Mail Transfer Protocol</td>
+                <td>The standard protocol for <strong>sending</strong> email messages from a client to a server or between servers.</td>
+            </tr>
+            <tr>
+                <td><strong>TCP/IP</strong></td>
+                <td>Transmission Control Protocol / Internet Protocol</td>
+                <td>The fundamental protocol suite of the Internet. <strong>TCP</strong> breaks data into packets and ensures they arrive correctly. <strong>IP</strong> handles the addressing and routing of these packets.</td>
+            </tr>
+            <tr>
+                <td><strong>POP3</strong></td>
+                <td>Post Office Protocol version 3</td>
+                <td>A protocol used by email clients to <strong>retrieve</strong> (download) emails from a mail server. The emails are typically deleted from the server after download.</td>
+            </tr>
+            <tr>
+                <td><strong>HTTPS</strong></td>
+                <td>HyperText Transfer Protocol Secure</td>
+                <td>A secure version of HTTP. It uses encryption (SSL/TLS) to protect the data being transferred between the browser and the web server. Used for online banking, shopping, etc.</td>
+            </tr>
+            <tr>
+                <td><strong>TELNET</strong></td>
+                <td>Terminal Network</td>
+                <td>A protocol used to remotely log in to another computer on a network. It is a text-based, unencrypted protocol.</td>
+            </tr>
+            <tr>
+                <td><strong>VoIP</strong></td>
+                <td>Voice over Internet Protocol</td>
+                <td>A technology that allows you to make voice calls using a broadband Internet connection instead of a regular phone line. (e.g., Skype, WhatsApp calls).</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- PROTOCOL EXAMPLES -->
+    <h3>Examples for the Protocols</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Protocol</th>
+                <th>Full Form</th>
+                <th>Real-World Examples</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>HTTP</strong></td>
+                <td>HyperText Transfer Protocol</td>
+                <td>Opening <code>http://www.example.com</code> in a browser; loading a news website</td>
+            </tr>
+            <tr>
+                <td><strong>FTP</strong></td>
+                <td>File Transfer Protocol</td>
+                <td>Uploading a website to a web server using FileZilla; downloading a file from an FTP server</td>
+            </tr>
+            <tr>
+                <td><strong>PPP</strong></td>
+                <td>Point-to-Point Protocol</td>
+                <td>Connecting to the Internet via a DSL modem; dial-up Internet connection</td>
+            </tr>
+            <tr>
+                <td><strong>SMTP</strong></td>
+                <td>Simple Mail Transfer Protocol</td>
+                <td>Sending an email from Gmail to Yahoo; sending an email from Outlook</td>
+            </tr>
+            <tr>
+                <td><strong>TCP/IP</strong></td>
+                <td>Transmission Control Protocol / Internet Protocol</td>
+                <td>Every Internet communication &mdash; browsing, email, video streaming, online gaming</td>
+            </tr>
+            <tr>
+                <td><strong>POP3</strong></td>
+                <td>Post Office Protocol version 3</td>
+                <td>Downloading emails from a mail server to Microsoft Outlook; configuring Gmail in a desktop email client</td>
+            </tr>
+            <tr>
+                <td><strong>HTTPS</strong></td>
+                <td>HyperText Transfer Protocol Secure</td>
+                <td>Online banking (<code>https://www.onlinesbi.com</code>); shopping on Amazon; logging into Gmail</td>
+            </tr>
+            <tr>
+                <td><strong>TELNET</strong></td>
+                <td>Terminal Network</td>
+                <td>Remote login to a server; configuring a router via command line; accessing a remote UNIX/Linux machine</td>
+            </tr>
+            <tr>
+                <td><strong>VoIP</strong></td>
+                <td>Voice over Internet Protocol</td>
+                <td>WhatsApp voice call; Skype call; Zoom meeting; Google Meet</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- ============================================================ -->
+    <!-- PART 7: INTRODUCTION TO WEB SERVICES -->
+    <!-- ============================================================ -->
+
+    <h2>Part 7: Introduction to Web Services</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Term</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>WWW (World Wide Web)</strong></td>
+                <td>An information system where documents and other web resources are identified by URLs, interlinked by hypertext links, and can be accessed via the Internet. It is a service that runs <em>on</em> the Internet.</td>
+            </tr>
+            <tr>
+                <td><strong>Hyper Text Markup Language (HTML)</strong></td>
+                <td>The standard markup language for creating web pages and web applications. It describes the structure of a web page.</td>
+            </tr>
+            <tr>
+                <td><strong>Extensible Markup Language (XML)</strong></td>
+                <td>A markup language designed to store and transport data. Unlike HTML, XML has no predefined tags; you create your own tags to describe the data.</td>
+            </tr>
+            <tr>
+                <td><strong>Domain Names</strong></td>
+                <td>A human-readable name that identifies a website (e.g., <code>google.com</code>). It is mapped to a numeric IP address by the Domain Name System (DNS).</td>
+            </tr>
+            <tr>
+                <td><strong>URL (Uniform Resource Locator)</strong></td>
+                <td>The complete address of a resource on the web. It consists of the protocol, domain name, and path to the specific file. (e.g., <code>https://www.example.com/index.html</code>).</td>
+            </tr>
+            <tr>
+                <td><strong>Website</strong></td>
+                <td>A collection of related web pages and other digital assets that are typically identified with a common domain name and published on at least one web server.</td>
+            </tr>
+            <tr>
+                <td><strong>Web Browser</strong></td>
+                <td>A software application used to access and view websites. (e.g., Google Chrome, Mozilla Firefox, Safari).</td>
+            </tr>
+            <tr>
+                <td><strong>Web Servers</strong></td>
+                <td>A computer system that hosts websites and delivers web pages to clients (web browsers) upon request. (e.g., Apache, Nginx).</td>
+            </tr>
+            <tr>
+                <td><strong>Web Hosting</strong></td>
+                <td>A service that provides the storage space and technology needed for a website to be accessible on the Internet. A web hosting company rents out server space to individuals and organizations.</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- WEB SERVICES EXAMPLES -->
+    <h3>Examples</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Web Service</th>
+                <th>Examples</th>
+                <th>Use Case</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>WWW (World Wide Web)</strong></td>
+                <td>Google, Wikipedia, YouTube, Amazon</td>
+                <td>Accessing information, watching videos, online shopping</td>
+            </tr>
+            <tr>
+                <td><strong>HTML</strong></td>
+                <td><code>&lt;h1&gt;Welcome&lt;/h1&gt;</code>, <code>&lt;p&gt;This is a paragraph&lt;/p&gt;</code>, <code>&lt;img src="photo.jpg"&gt;</code></td>
+                <td>Creating the structure and content of web pages</td>
+            </tr>
+            <tr>
+                <td><strong>XML</strong></td>
+                <td><code>&lt;student&gt;&lt;name&gt;Rahul&lt;/name&gt;&lt;roll&gt;12&lt;/roll&gt;&lt;/student&gt;</code></td>
+                <td>Storing and transporting data between applications (e.g., RSS feeds, configuration files)</td>
+            </tr>
+            <tr>
+                <td><strong>Domain Names</strong></td>
+                <td><code>google.com</code>, <code>cbse.gov.in</code>, <code>wikipedia.org</code>, <code>amazon.in</code></td>
+                <td>Human-readable addresses for websites</td>
+            </tr>
+            <tr>
+                <td><strong>URL</strong></td>
+                <td><code>https://www.google.com/search?q=class12</code>, <code>https://www.youtube.com/watch?v=abc123</code></td>
+                <td>Complete address to access a specific web resource</td>
+            </tr>
+            <tr>
+                <td><strong>Website</strong></td>
+                <td><code>www.cbse.gov.in</code> (CBSE official website), <code>www.flipkart.com</code></td>
+                <td>A collection of related web pages under one domain</td>
+            </tr>
+            <tr>
+                <td><strong>Web Browser</strong></td>
+                <td>Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Opera</td>
+                <td>Software used to access and view websites</td>
+            </tr>
+            <tr>
+                <td><strong>Web Servers</strong></td>
+                <td>Apache HTTP Server, Nginx, Microsoft IIS, LiteSpeed</td>
+                <td>Hosting websites and serving web pages to browsers</td>
+            </tr>
+            <tr>
+                <td><strong>Web Hosting</strong></td>
+                <td>GoDaddy, Bluehost, HostGator, AWS (Amazon Web Services), GitHub Pages</td>
+                <td>Renting server space to make a website accessible on the Internet</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example">
+        <strong>Complete Example &mdash; How Web Services Work Together:</strong>
+        <ol>
+            <li>A student types <code>https://www.cbse.gov.in</code> in <strong>Google Chrome</strong> (Web Browser).</li>
+            <li>The <strong>URL</strong> is resolved via <strong>DNS</strong> to an IP address.</li>
+            <li>The request goes to the <strong>Web Server</strong> (e.g., Apache) hosting the CBSE <strong>Website</strong>.</li>
+            <li>The server sends back <strong>HTML</strong> pages, which the browser renders.</li>
+            <li>The website is made available through <strong>Web Hosting</strong> services.</li>
+            <li><strong>HTTPS</strong> ensures the connection is secure.</li>
+        </ol>
+    </div>
+
+    <hr>
+
+</div>
+
+</body>
+</html>
