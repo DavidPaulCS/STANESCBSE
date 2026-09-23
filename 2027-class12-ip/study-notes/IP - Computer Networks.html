@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP | Computer Networks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background-color: #f4f7f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #2980b9;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        h2 {
+            color: #ffffff;
+            background-color: #2980b9;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        h3 {
+            color: #1a5276;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.25em;
+            border-left: 4px solid #2980b9;
+            padding-left: 12px;
+        }
+
+        h4 {
+            color: #2c3e50;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #1a5276;
+        }
+
+        .definition {
+            background-color: #eaf2f8;
+            border-left: 5px solid #2980b9;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .example {
+            background-color: #fef9e7;
+            border-left: 5px solid #f39c12;
+            padding: 12px 20px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .example strong {
+            color: #d35400;
+        }
+
+        .analogy {
+            background-color: #e8f8f5;
+            border-left: 5px solid #1abc9c;
+            padding: 12px 20px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .analogy strong {
+            color: #16a085;
+        }
+
+        .pros-cons {
+            display: flex;
+            gap: 20px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .pros, .cons {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 18px;
+            border-radius: 6px;
+        }
+
+        .pros {
+            background-color: #e8f8f5;
+            border: 1px solid #1abc9c;
+        }
+
+        .pros strong {
+            color: #16a085;
+        }
+
+        .cons {
+            background-color: #fdedec;
+            border: 1px solid #e74c3c;
+        }
+
+        .cons strong {
+            color: #c0392b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #eaf2f8;
+        }
+
+        .highlight-box {
+            background-color: #fdf2e9;
+            border: 2px dashed #e67e22;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: #d35400;
+        }
+
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            color: #c0392b;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #bdc3c7;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 25px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.25em;
+            }
+
+            .pros-cons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Class 12 IP | Computer Networks</h1>
+   
+
+    <!-- ============================================================ -->
+    <!-- PART 1: INTRODUCTION TO COMPUTER NETWORKS -->
+    <!-- ============================================================ -->
+
+    <h2>Part 1: Introduction to Computer Networks</h2>
+
+    <h3>1. Introduction to Networks</h3>
+
+    <div class="definition">
+        <strong>Definition:</strong> A <strong>computer network</strong> is a collection of interconnected computers and other devices (like printers, scanners) that can communicate with each other and share resources (like files, printers, and internet connection).
+    </div>
+
+    <h4>Key Advantages of a Network:</h4>
+    <ul>
+        <li><strong>Resource Sharing:</strong> Share hardware (printers, scanners), software, and data.</li>
+        <li><strong>Communication:</strong> Email, instant messaging, video conferencing.</li>
+        <li><strong>Data Centralization:</strong> Store data on a central server for easy access and backup.</li>
+        <li><strong>Cost Efficiency:</strong> Reduce costs by sharing expensive resources.</li>
+        <li><strong>Reliability:</strong> If one computer fails, others can take over its work.</li>
+    </ul>
+
+    <h3>2. Types of Network: PAN, LAN, MAN, WAN</h3>
+
+    <p>Networks are classified based on their geographical area (range):</p>
+
+    <ul>
+        <li><strong>PAN (Personal Area Network):</strong> A network organized around an individual person. Range is typically up to 10 meters. (e.g., Bluetooth connection between a phone and a headset).</li>
+        <li><strong>LAN (Local Area Network):</strong> A network that connects devices within a small, limited area like a home, office, or school. (e.g., your home Wi-Fi network).</li>
+        <li><strong>MAN (Metropolitan Area Network):</strong> A network that spans a city or a large campus. It is larger than a LAN but smaller than a WAN. (e.g., a cable TV network in a city).</li>
+        <li><strong>WAN (Wide Area Network):</strong> A network that spans a large geographical area, such as a country, continent, or the entire world. The Internet is the largest WAN. (e.g., a bank&rsquo;s network connecting its branches across the country).</li>
+    </ul>
+    <h3>Range, Examples, Use Cases</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Network Type</th>
+                <th>Full Form</th>
+                <th>Geographical Area Covered</th>
+                <th>Examples</th>
+                <th>Use Case</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>PAN</strong></td>
+                <td>Personal Area Network</td>
+                <td>Very small area around a person (Up to 10 m)</td>
+                <td>Bluetooth headset, smartwatch, wireless keyboard, NFC payment</td>
+                <td>Connecting personal devices around one person</td>
+            </tr>
+            <tr>
+                <td><strong>LAN</strong></td>
+                <td>Local Area Network</td>
+                <td>Typically a building or a campus (Up to 1 km)</td>
+                <td>Home Wi-Fi, school computer lab, office network, college campus</td>
+                <td>Sharing files, printers, and internet within a small area</td>
+            </tr>
+            <tr>
+                <td><strong>MAN</strong></td>
+                <td>Metropolitan Area Network</td>
+                <td>A city or a metropolitan area or a large campus (10 km to 100 km)</td>
+                <td>Cable TV network, city-wide Wi-Fi, bank branches in a city, metro rail network</td>
+                <td>Connecting multiple LANs across a city</td>
+            </tr>
+            <tr>
+                <td><strong>WAN</strong></td>
+                <td>Wide Area Network</td>
+                <td>Large geographical area — countries or worldwide (more than 100 kms)</td>
+                <td>The Internet, national banking network, airline reservation system, mobile phone network</td>
+                <td>Connecting networks across countries and continents</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example">
+        <strong>More Examples with Use Cases:</strong>
+        <ul>
+            <li><strong>PAN:</strong> A person using Bluetooth headphones connected to their Phone via Bluetooth &mdash; use case: listening to music while walking.</li>
+            <li><strong>LAN:</strong> A family connecting their laptop, printer, and smart TV to a home Wi-Fi router &mdash; use case: sharing a printer and streaming movies.</li>
+            <li><strong>MAN:</strong> A city&rsquo;s traffic monitoring system where cameras across the city send data to a central control room &mdash; use case: traffic management.</li>
+            <li><strong>WAN:</strong> A multinational company connecting its offices in India, USA, and UK &mdash; use case: sharing company data and video conferencing across continents.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PART 2: NETWORK DEVICES -->
+    <!-- ============================================================ -->
+
+    <h2>Part 2: Network Devices</h2>
+
+    <p>Network devices are hardware components used to connect computers and other devices to form a network.</p>
+<table>
+        <thead>
+            <tr>
+                <th>Device</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Modem (MOdulator-DEModulator)</strong></td>
+                <td>A device that converts digital signals from a computer into analog signals (modulation) for transmission over telephone lines, and converts incoming analog signals back into digital signals (demodulation).</td>
+            </tr>
+            <tr>
+                <td><strong>Ethernet Card (NIC &mdash; Network Interface Card)</strong></td>
+                <td>A hardware component installed in a computer that allows it to connect to a network. It provides the physical connection (e.g., for an Ethernet cable) and has a unique MAC address.</td>
+            </tr>
+            <tr>
+                <td><strong>RJ45 (Registered Jack 45)</strong></td>
+                <td>The standard connector used for Ethernet cables (like Cat5/Cat6). It looks like a slightly larger telephone connector.</td>
+            </tr>
+            <tr>
+                <td><strong>Repeater</strong></td>
+                <td>A device that regenerates and amplifies a weak or degraded signal over a long distance, allowing it to travel further without losing quality.</td>
+            </tr>
+            <tr>
+                <td><strong>Hub</strong></td>
+                <td>A basic networking device that connects multiple devices in a LAN. It is a <strong>dumb</strong> device that broadcasts any data it receives to all connected devices, leading to unnecessary traffic and collisions.</td>
+            </tr>
+            <tr>
+                <td><strong>Switch</strong></td>
+                <td>An intelligent networking device that connects multiple devices in a LAN. It learns the MAC addresses of connected devices and forwards data only to the intended recipient, making it more efficient than a hub.</td>
+            </tr>
+            <tr>
+                <td><strong>Router</strong></td>
+                <td>A device that connects different networks together (e.g., your home LAN to the Internet). It uses IP addresses to determine the best path for data packets to travel.</td>
+            </tr>
+            <tr>
+                <td><strong>Gateway</strong></td>
+                <td>A device that acts as a &ldquo;gate&rdquo; between two networks that use different protocols. It translates data from one protocol to another, allowing dissimilar networks to communicate.</td>
+            </tr>
+            <tr>
+                <td><strong>Wi-Fi Card</strong></td>
+                <td>A wireless network interface controller that allows a device to connect to a network using Wi-Fi (Wireless Fidelity).</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- MAC ADDRESS -->
+    <h3>MAC Address (Media Access Control Address)</h3>
+
+    <div class="definition">
+        <strong>MAC Address</strong> stands for <strong>Media Access Control Address</strong>. It is a unique 48-bit (6-byte) hardware address assigned to a Network Interface Card (NIC) by the manufacturer. It is also known as a <strong>physical address</strong> or <strong>hardware address</strong>.
+    </div>
+
+    <h4>Examples of MAC Addresses:</h4>
+    <div class="example">
+        <ul>
+            <li><code>00:1A:2B:3C:4D:5E</code> &mdash; A typical Ethernet NIC</li>
+            <li><code>A4:5E:60:12:34:56</code> &mdash; A Wi-Fi adapter</li>
+            <li><code>00:50:56:C0:00:08</code> &mdash; A VMware virtual machine NIC (note: VMware uses its own OUI)</li>
+            <li><code>3C:5A:B4:9F:1D:22</code> &mdash; A Bluetooth adapter</li>
+        </ul>
+    </div>
+
+    <div class="highlight-box">
+        <strong>MAC vs IP Address:</strong> A MAC address is a permanent physical address (like a fingerprint), while an IP address is a logical address that can change (like a postal address). MAC works at Layer 2, IP works at Layer 3.
+    </div>
+    <!-- REPEATER DISTANCE -->
+<h3>Placement of a Repeater</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Cable Type</th>
+            <th>Maximum Segment Length</th>
+            <th>Purpose of Repeater</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Twisted Pair (UTP)</strong></td>
+            <td><strong>100 metres</strong></td>
+            <td>Used to regenerate the signal and extend the network beyond 100 m</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="highlight-box">
+    <strong>Remember:</strong> In standard Ethernet using twisted-pair cable, a cable segment can be up to <strong>100 metres</strong>. A repeater is used when the network needs to extend beyond this distance.
+</div>
+
+    <!-- DIFFERENCES: HUB vs SWITCH, ROUTER vs GATEWAY -->
+    <h3>Difference between Hub and Switch, Router and Gateway</h3>
+
+    <h4>a) Hub vs Switch</h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Hub</th>
+            <th>Switch</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Function</strong></td>
+            <td>Connects multiple devices in a network</td>
+            <td>Connects multiple devices and forwards data to the intended device</td>
+        </tr>
+        <tr>
+            <td><strong>Data Transmission</strong></td>
+            <td>Sends data to all connected devices</td>
+            <td>Sends data only to the intended device</td>
+        </tr>
+        <tr>
+            <td><strong>Efficiency</strong></td>
+            <td>Less efficient</td>
+            <td>More efficient</td>
+        </tr>
+        <tr>
+                <td><strong>Security</strong></td>
+                <td>Low &mdash; all devices see all traffic</td>
+                <td>High &mdash; traffic is isolated</td>
+            </tr>
+            <tr>
+                <td><strong>Cost</strong></td>
+                <td>Cheaper</td>
+                <td>More expensive</td>
+            </tr>
+        <tr>
+            <td><strong>Usage</strong></td>
+            <td>Used in older or simple networks</td>
+            <td>Commonly used in LANs such as school and office networks</td>
+        </tr>
+    </tbody>
+</table>
+
+    <div class="example">
+        <strong>Example Scenario:</strong> In a school computer lab with 30 computers, if a <strong>Hub</strong> is used, when Computer A sends data to Computer B, all 30 computers receive the data. This wastes bandwidth and causes collisions. If a <strong>Switch</strong> is used, the data goes only to Computer B, making the network faster and more secure.
+    </div>
+    <h4>b) Router vs Gateway</h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Router</th>
+            <th>Gateway</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Function</strong></td>
+            <td>Connects different networks and routes data between them</td>
+            <td>Connects networks that may use different communication protocols</td>
+        </tr>
+        <tr>
+            <td><strong>Main Purpose</strong></td>
+            <td>Determines the appropriate path for data packets</td>
+            <td>Acts as a connection point between different networks or systems</td>
+        </tr>
+        <tr>
+                <td><strong>Complexity</strong></td>
+                <td>Less complex</td>
+                <td>More complex</td>
+            </tr>
+            <tr>
+                <td><strong>Speed</strong></td>
+                <td>Faster</td>
+                <td>Slower (due to protocol conversion)</td>
+            </tr>
+        <tr>
+            <td><strong>Example</strong></td>
+            <td>Connects a home or school LAN to the Internet</td>
+            <td>Connects networks using different protocols</td>
+        </tr>
+    </tbody>
+</table>
+   
+    <div class="example">
+        <strong>Example Scenario (Router):</strong> Your home Wi-Fi router connects your home LAN (using private IPs like 192.168.1.x) to the Internet (using public IPs). It routes packets between these two IP-based networks.<br><br>
+        <strong>Example Scenario (Gateway):</strong> A smart TV may use a gateway to communicate between its home network and a different network or service that uses a different communication protocol.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PART 3: NETWORK TOPOLOGIES -->
+    <!-- ============================================================ -->
+
+    <h2>Part 3: Network Topologies</h2>
+
+    <div class="definition">
+        <strong>Topology</strong> refers to the physical or logical arrangement of devices (nodes) in a network.
+    </div>
+
+    <h3>1. Star Topology</h3>
+    <ul>
+        <li><strong>Layout:</strong> All devices are connected to a central device, such as a hub or a switch.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Easy to install and manage</li>
+                <li>If one device or cable fails, only that device is affected</li>
+                <li>Easy to add or remove devices</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>If the central hub/switch fails, the entire network goes down</li>
+                <li>More cable required than bus topology</li>
+            </ul>
+        </div>
+    </div>
+    <div class="example">
+        <strong>Use Case:</strong> A school computer lab with 40 computers connected to a central switch &mdash; if one computer&rsquo;s cable is faulty, only that computer is affected.
+    </div>
+
+    <h3>2. Bus Topology</h3>
+    <ul>
+        <li><strong>Layout:</strong> All devices are connected to a single central cable called the &ldquo;backbone&rdquo; or &ldquo;bus.&rdquo;</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Easy to install</li>
+                <li>Requires less cable</li>
+                <li>Cheaper than star topology</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>If the backbone cable fails, the entire network goes down</li>
+                <li>Difficult to troubleshoot</li>
+                <li>High chance of data collisions</li>
+            </ul>
+        </div>
+    </div>
+    <div class="example">
+        <strong>Use Case:</strong> A small cyber caf&eacute; with 6 computers on a tight budget.
+    </div>
+
+    <h3>3. Tree Topology</h3>
+    <ul>
+        <li><strong>Layout:</strong> A hybrid topology that combines characteristics of Bus and Star topologies. It consists of groups of star-configured networks connected to a linear bus backbone cable.</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Scalable</li>
+                <li>Easy to manage in segments</li>
+                <li>Allows hierarchical grouping of departments</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>If the backbone cable fails, the entire network is affected</li>
+                <li>More cabling required</li>
+            </ul>
+        </div>
+    </div>
+    <div class="example">
+        <strong>Use Case:</strong> A university with separate departments (Science, Arts, Commerce) each having its own star network, all connected to a central backbone.
+    </div>
+
+    <h3>4. Mesh Topology</h3>
+    <ul>
+        <li><strong>Layout:</strong> Every device is connected to every other device in the network through a dedicated point-to-point link.</li>
+        <li><strong>Formula:</strong> For <em>n</em> devices, the number of links required = <strong>n(n&minus;1)/2</strong> (for full mesh).</li>
+    </ul>
+    <div class="pros-cons">
+        <div class="pros">
+            <strong>Pros:</strong>
+            <ul>
+                <li>Highly reliable &mdash; if one link fails, data can be rerouted</li>
+                <li>No traffic congestion (dedicated links)</li>
+                <li>Highly secure (data travels only between intended devices)</li>
+                <li>Easy to identify faults</li>
+            </ul>
+        </div>
+        <div class="cons">
+            <strong>Cons:</strong>
+            <ul>
+                <li>Very expensive (lots of cable and ports required)</li>
+                <li>Difficult to install and configure</li>
+                <li>Impractical for large networks</li>
+            </ul>
+        </div>
+    </div>
+    <div class="example">
+        <strong>Use Case:</strong> Military communication networks, backbone of the Internet, and critical banking systems where reliability is paramount.
+    </div>
+
+    <h3>Comparison of Topologies</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Star</th>
+                <th>Bus</th>
+                <th>Tree</th>
+                <th>Mesh</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Cable Required</strong></td>
+                <td>Moderate</td>
+                <td>Least</td>
+                <td>Moderate</td>
+                <td>Most</td>
+            </tr>
+            <tr>
+                <td><strong>Cost</strong></td>
+                <td>Moderate</td>
+                <td>Low</td>
+                <td>Moderate</td>
+                <td>Very High</td>
+            </tr>
+            <tr>
+                <td><strong>Reliability</strong></td>
+                <td>Good</td>
+                <td>Poor</td>
+                <td>Good</td>
+                <td>Excellent</td>
+            </tr>
+            <tr>
+                <td><strong>Troubleshooting</strong></td>
+                <td>Easy</td>
+                <td>Difficult</td>
+                <td>Moderate</td>
+                <td>Easy</td>
+            </tr>
+            <tr>
+                <td><strong>Scalability</strong></td>
+                <td>Easy</td>
+                <td>Difficult</td>
+                <td>Easy</td>
+                <td>Difficult</td>
+            </tr>
+            <tr>
+                <td><strong>Best For</strong></td>
+                <td>Office, school, home</td>
+                <td>Small, temporary networks</td>
+                <td>Large organizations, campuses</td>
+                <td>Critical, high-reliability systems</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ============================================================ -->
+    <!-- PART 4: INTRODUCTION TO INTERNET -->
+    <!-- ============================================================ -->
+
+    <h2>Part 4: Introduction to Internet, URL, WWW, and Its Applications</h2>
+
+    <h3>1. Introduction to Internet</h3>
+
+    <div class="definition">
+        The <strong>Internet</strong> is a global system of interconnected computer networks that use the Internet protocol suite (TCP/IP) to link devices worldwide. It is a &ldquo;network of networks.&rdquo;
+    </div>
+
+    <ul>
+        <li>The Internet grew out of ARPANET (1969) and NSFNET (1986).</li>
+        <li>The adoption of <strong>TCP/IP</strong> on January 1, 1983, is considered the birth of the modern Internet.</li>
+        <li>The invention of the <strong>World Wide Web (WWW)</strong> by Tim Berners-Lee in 1989 made the Internet easily accessible to the general public.</li>
+    </ul>
+
+    <h3>2. URL (Uniform Resource Locator)</h3>
+
+    <div class="definition">
+        A <strong>URL</strong> is the complete address of a resource on the web. It specifies the location of a web page, image, video, or other resource on the Internet.
+    </div>
+
+    <h4>Structure of a URL:</h4>
+    <p><code>https://www.example.com/index.html</code></p>
+    <ul>
+        <li><strong>Protocol:</strong> <code>https://</code> &mdash; the method used to access the resource.</li>
+        <li><strong>Domain Name:</strong> <code>www.example.com</code> &mdash; the human-readable address of the web server.</li>
+        <li><strong>Path:</strong> <code>/index.html</code> &mdash; the specific file or page on the server.</li>
+    </ul>
+
+    <div class="example">
+        <strong>Examples of URLs:</strong>
+        <ul>
+            <li><code>https://www.google.com/search?q=class12</code></li>
+            <li><code>https://www.youtube.com/watch?v=abc123</code></li>
+            <li><code>https://www.cbse.gov.in/cbsenew/cbse.html</code></li>
+        </ul>
+    </div>
+
+    <h3>3. WWW (World Wide Web)</h3>
+
+    <div class="definition">
+        The <strong>World Wide Web (WWW)</strong> is an information system where documents and other web resources are identified by URLs, interlinked by hypertext links, and can be accessed via the Internet. It is a service that runs <em>on</em> the Internet.
+    </div>
+
+    <div class="highlight-box">
+        <strong>Internet vs WWW:</strong> The Internet is the physical infrastructure (hardware, cables, servers), while the WWW is a service (software) that runs on the Internet. The Internet is like the roads; the WWW is like the vehicles and buildings on those roads.
+    </div>
+
+    <h3>4. Applications of the Internet</h3>
+
+    <h4>a) Web (World Wide Web)</h4>
+    <ul>
+        <li>Browsing websites, reading news, watching videos, online shopping, e-learning.</li>
+        <li><strong>Examples:</strong> Google, Wikipedia, YouTube, Amazon, Flipkart, CBSE website.</li>
+    </ul>
+
+    <h4>b) Email (Electronic Mail)</h4>
+    <ul>
+        <li>Sending and receiving messages electronically over the Internet.</li>
+        <li>Can include text, images, documents, and other attachments.</li>
+        <li><strong>Examples:</strong> Gmail, Yahoo Mail, Outlook, Rediffmail.</li>
+        <li><strong>Use Case:</strong> A student emails an assignment to a teacher; a company sends invoices to clients.</li>
+    </ul>
+
+    <h4>c) Chat (Instant Messaging)</h4>
+    <ul>
+        <li>Real-time text-based communication between two or more users over the Internet.</li>
+        <li><strong>Examples:</strong> WhatsApp, Telegram, Instagram Direct, Facebook Messenger, Google Chat.</li>
+        <li><strong>Use Case:</strong> Friends chatting in a group; customer support chat on a shopping website.</li>
+    </ul>
+
+    <h4>d) VoIP (Voice over Internet Protocol)</h4>
+    <ul>
+        <li>A technology that allows voice calls to be made using a broadband Internet connection instead of a regular phone line.</li>
+        <li>Can also support video calls and conference calls.</li>
+        <li><strong>Examples:</strong> WhatsApp voice call, Skype, Zoom, Google Meet, Microsoft Teams.</li>
+        <li><strong>Use Case:</strong> A student attending an online class via Zoom; a family making an international call via WhatsApp.</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <!-- PART 5: WEBSITE -->
+    <!-- ============================================================ -->
+
+    <h2>Part 5: Website</h2>
+
+    <h3>1. Introduction to Website</h3>
+
+    <div class="definition">
+        A <strong>website</strong> is a collection of related web pages and other digital assets (images, videos, documents) that are typically identified with a common domain name and published on at least one web server.
+    </div>
+
+    <ul>
+        <li><strong>Example:</strong> <code>www.cbse.gov.in</code> (CBSE official website), <code>www.flipkart.com</code>.</li>
+        <li>A website is accessed through a <strong>web browser</strong> by typing its URL.</li>
+    </ul>
+
+    <h3>2. Difference between a Website and a Webpage</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Website</th>
+                <th>Webpage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Definition</strong></td>
+                <td>A collection of related web pages</td>
+                <td>A single document on the web</td>
+            </tr>
+            <tr>
+                <td><strong>Scope</strong></td>
+                <td>Larger &mdash; contains many web pages</td>
+                <td>Smaller &mdash; a single page within a website</td>
+            </tr>
+            <tr>
+                <td><strong>URL</strong></td>
+                <td>Has a common domain name (e.g., <code>www.example.com</code>)</td>
+                <td>Has a specific URL including the path (e.g., <code>www.example.com/about.html</code>)</td>
+            </tr>
+            <tr>
+                <td><strong>Dependency</strong></td>
+                <td>Independent &mdash; can exist on its own</td>
+                <td>Dependent &mdash; is a part of a website</td>
+            </tr>
+            <tr>
+                <td><strong>Example</strong></td>
+                <td><code>www.google.com</code> (the entire Google site)</td>
+                <td><code>www.google.com/search</code> (a single page)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="analogy">
+        <strong>Analogy:</strong> A <strong>website</strong> is like a book, and a <strong>webpage</strong> is like a single page in that book. A book (website) contains many pages (webpages), all bound together under one title (domain name).
+    </div>
+
+    <h3>3. Static vs Dynamic Web Page</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Static Web Page</th>
+                <th>Dynamic Web Page</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Content</strong></td>
+                <td>Fixed content &mdash; same for every user</td>
+                <td>Content changes based on user, time, or other factors</td>
+            </tr>
+            <tr>
+                <td><strong>Server-Side Processing</strong></td>
+                <td>No server-side processing needed</td>
+                <td>Requires server-side processing (PHP, ASP.NET, JSP, Python)</td>
+            </tr>
+            <tr>
+                <td><strong>Database</strong></td>
+                <td>Does not use a database</td>
+                <td>Typically uses a database to fetch content</td>
+            </tr>
+            <tr>
+                <td><strong>Loading Speed</strong></td>
+                <td>Loads faster</td>
+                <td>Loads slower (due to server processing)</td>
+            </tr>
+            <tr>
+                <td><strong>Maintenance</strong></td>
+                <td>Difficult to update &mdash; must edit HTML manually</td>
+                <td>Easy to update &mdash; content managed via CMS or database</td>
+            </tr>
+            <tr>
+                <td><strong>Interactivity</strong></td>
+                <td>Low &mdash; no user interaction beyond links</td>
+                <td>High &mdash; forms, login, search, comments</td>
+            </tr>
+            <tr>
+                <td><strong>Technology</strong></td>
+                <td>HTML, CSS</td>
+                <td>HTML, CSS, JavaScript, PHP, ASP.NET, JSP, Python, databases</td>
+            </tr>
+            <tr>
+                <td><strong>Example</strong></td>
+                <td>A personal portfolio page, an "About Us" page</td>
+                <td>Facebook feed, Gmail inbox, Amazon search results, online banking</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example">
+        <strong>Examples:</strong>
+        <ul>
+            <li><strong>Static:</strong> A college&rsquo;s "Contact Us" page that displays the same address and phone number to every visitor.</li>
+            <li><strong>Dynamic:</strong> A student logging into the CBSE results website and seeing their own marks &mdash; the page is generated dynamically based on the roll number entered.</li>
+        </ul>
+    </div>
+
+    <h3>4. Web Server and Hosting of a Website</h3>
+
+    <h4>Web Server:</h4>
+    <div class="definition">
+        A <strong>web server</strong> is a computer system that hosts websites and delivers web pages to clients (web browsers) upon request.
+    </div>
+    <ul>
+        <li>It stores website files (HTML, CSS, images) and responds to HTTP/HTTPS requests from browsers.</li>
+        <li><strong>Examples:</strong> Apache HTTP Server, Nginx, Microsoft IIS, LiteSpeed.</li>
+    </ul>
+
+    <h4>Web Hosting:</h4>
+    <div class="definition">
+        <strong>Web hosting</strong> is a service that provides the storage space and technology needed for a website to be accessible on the Internet.
+    </div>
+    <ul>
+        <li>A web hosting company rents out server space to individuals and organizations.</li>
+        <li><strong>Examples:</strong> GoDaddy, Bluehost, HostGator, AWS (Amazon Web Services), GitHub Pages.</li>
+    </ul>
+
+    <div class="highlight-box">
+        <strong>How it works:</strong> When you type <code>https://www.cbse.gov.in</code> in your browser, the request goes to the <strong>web server</strong> hosting the CBSE <strong>website</strong>. The server processes the request and sends back the web pages, which the browser displays. The website is made available through a <strong>web hosting</strong> service.
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PART 6: WEB BROWSERS -->
+    <!-- ============================================================ -->
+
+    <h2>Part 6: Web Browsers</h2>
+
+    <h3>1. Introduction to Web Browsers</h3>
+
+    <div class="definition">
+        A <strong>web browser</strong> is a software application used to access, retrieve, and view websites and web pages on the Internet.
+    </div>
+
+    <ul>
+        <li>It sends requests to web servers and renders the received HTML/CSS/JavaScript into a visual page.</li>
+        <li>It interprets URLs and displays the corresponding web content.</li>
+    </ul>
+
+    <h3>2. Commonly Used Browsers</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Browser</th>
+                <th>Developed By</th>
+                <th>Platform</th>
+                <th>Key Feature</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Google Chrome</strong></td>
+                <td>Google</td>
+                <td>Windows, macOS, Linux, Android, iOS</td>
+                <td>Most popular; fast; large extension library</td>
+            </tr>
+            <tr>
+                <td><strong>Mozilla Firefox</strong></td>
+                <td>Mozilla Foundation</td>
+                <td>Windows, macOS, Linux, Android, iOS</td>
+                <td>Open-source; strong privacy features</td>
+            </tr>
+            <tr>
+                <td><strong>Microsoft Edge</strong></td>
+                <td>Microsoft</td>
+                <td>Windows, macOS, Android, iOS</td>
+                <td>Default browser on Windows; built on Chromium</td>
+            </tr>
+            <tr>
+                <td><strong>Safari</strong></td>
+                <td>Apple</td>
+                <td>macOS, iOS</td>
+                <td>Default browser on Apple devices; energy-efficient</td>
+            </tr>
+            <tr>
+                <td><strong>Opera</strong></td>
+                <td>Opera Software</td>
+                <td>Windows, macOS, Linux, Android, iOS</td>
+                <td>Built-in VPN; ad blocker; battery saver</td>
+            </tr>
+            <tr>
+                <td><strong>Brave</strong></td>
+                <td>Brave Software</td>
+                <td>Windows, macOS, Linux, Android, iOS</td>
+                <td>Privacy-focused; blocks ads and trackers by default</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3. Browser Settings</h3>
+
+    <p>Browser settings allow users to customize the browser&rsquo;s behavior and appearance. Common settings include:</p>
+
+    <ul>
+        <li><strong>Homepage:</strong> The page that opens when the browser starts.</li>
+        <li><strong>Default Search Engine:</strong> The search engine used when typing in the address bar (e.g., Google, Bing, DuckDuckGo).</li>
+        <li><strong>Privacy and Security:</strong> Managing cookies, clearing browsing data, blocking pop-ups, enabling safe browsing.</li>
+        <li><strong>Downloads:</strong> Setting the default download location and asking where to save each file.</li>
+        <li><strong>Appearance:</strong> Changing theme, font size, and zoom level.</li>
+        <li><strong>Languages:</strong> Setting preferred languages for web pages.</li>
+        <li><strong>Extensions/Add-ons:</strong> Managing installed extensions.</li>
+        <li><strong>Passwords:</strong> Saving and managing login credentials.</li>
+        <li><strong>Autofill:</strong> Automatically filling forms with saved information.</li>
+    </ul>
+
+    <div class="example">
+        <strong>Example:</strong> In Google Chrome, go to <code>Settings &rarr; Privacy and Security &rarr; Cookies and other site data</code> to manage cookie settings. Go to <code>Settings &rarr; Appearance</code> to change the theme to dark mode.
+    </div>
+
+    <h3>4. Add-ons and Plug-ins</h3>
+
+    <h4>Add-ons (Extensions):</h4>
+    <div class="definition">
+        <strong>Add-ons</strong> (also called <strong>extensions</strong>) are small software programs that add new features or functionality to a web browser.
+    </div>
+    <ul>
+        <li>They are installed from the browser&rsquo;s official store (e.g., Chrome Web Store, Firefox Add-ons).</li>
+        <li>They can modify the browser&rsquo;s UI, block ads, manage passwords, etc.</li>
+        <li><strong>Examples:</strong> AdBlock Plus, Grammarly, LastPass, Dark Reader, uBlock Origin.</li>
+    </ul>
+
+    <h4>Plug-ins:</h4>
+    <div class="definition">
+        <strong>Plug-ins</strong> are software components that add specific capabilities to a web browser, typically for handling particular types of content (e.g., PDF, Flash, Java).
+    </div>
+    <ul>
+        <li>They are usually third-party programs that integrate with the browser.</li>
+        <li>Modern browsers have largely replaced the need for plug-ins by integrating features natively.</li>
+        <li><strong>Examples:</strong> Adobe Flash Player (discontinued), Java Plug-in (deprecated), PDF viewer plug-ins.</li>
+    </ul>
+
+    <div class="highlight-box">
+        <strong>Add-on vs Plug-in:</strong> An <strong>add-on</strong> enhances the browser&rsquo;s functionality (e.g., ad blocker), while a <strong>plug-in</strong> enables the browser to display or process specific types of content (e.g., PDF, Flash). In modern browsers, the line between them has blurred, and the term "extension" is more commonly used.
+    </div>
+
+    <h3>5. Cookies</h3>
+
+    <div class="definition">
+        <strong>Cookies</strong> are small text files stored on a user&rsquo;s computer by a website. They contain data about the user&rsquo;s browsing activity and preferences.
+    </div>
+
+    <h4>Purpose of Cookies:</h4>
+    <ul>
+        <li><strong>Session Management:</strong> Keeping a user logged in as they navigate between pages.</li>
+        <li><strong>Personalization:</strong> Remembering user preferences (e.g., language, theme, location).</li>
+        <li><strong>Tracking:</strong> Recording browsing behavior for analytics and targeted advertising.</li>
+        <li><strong>Shopping Carts:</strong> Remembering items added to a cart on an e-commerce site.</li>
+    </ul>
+
+    <h4>Types of Cookies:</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Session Cookies</strong></td>
+                <td>Temporary; deleted when the browser is closed</td>
+                <td>Keeping you logged in while navigating a website</td>
+            </tr>
+            <tr>
+                <td><strong>Persistent Cookies</strong></td>
+                <td>Stored for a fixed period; remain after browser is closed</td>
+                <td>Remembering your login credentials for a website</td>
+            </tr>
+            <tr>
+                <td><strong>First-Party Cookies</strong></td>
+                <td>Set by the website you are visiting</td>
+                <td>Amazon remembering your shopping cart</td>
+            </tr>
+            <tr>
+                <td><strong>Third-Party Cookies</strong></td>
+                <td>Set by a domain other than the one you are visiting</td>
+                <td>Advertising networks tracking your browsing across sites</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example">
+        <strong>Examples:</strong>
+        <ul>
+            <li>When you log into Gmail and check "Remember me," a persistent cookie is stored so you don&rsquo;t have to log in again.</li>
+            <li>When you add items to your Amazon cart and close the browser, a cookie remembers your cart items when you return.</li>
+            <li>When you search for a product on Flipkart, third-party cookies may show you ads for similar products on other websites.</li>
+        </ul>
+    </div>
+
+    <div class="highlight-box">
+        <strong>Privacy Concern:</strong> Cookies can be used to track user behavior across websites, raising privacy concerns. Users can manage or delete cookies through browser settings. Many browsers now block third-party cookies by default.
+    </div>
+
+    <hr>
+
+</div>
+
+</body>
+</html>
