@@ -1,6 +1,22 @@
 {
   "files": [
     {
+      "file": "17_CREATE_INSERT_Py_SQL.py",
+      "category": "python"
+    },
+    {
+      "file": "18_UPDATE_DELETE_Py_SQL.py",
+      "category": "python"
+    },
+    {
+      "file": "19_SELECT_Py_SQL.py",
+      "category": "python"
+    },
+    {
+      "file": "20_ALTER_Py_SQL.py",
+      "category": "python"
+    },
+    {
       "file": "CODE-Data File Handling.html",
       "category": "python"
     },
