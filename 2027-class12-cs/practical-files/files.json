@@ -1,6 +1,34 @@
 {
   "files": [
     {
+      "file": "10_Searching_Binary_File.py",
+      "category": "python"
+    },
+    {
+      "file": "11_Updating_Binary_File.py",
+      "category": "python"
+    },
+    {
+      "file": "12_Inventory_CSV_File_Creation.py",
+      "category": "python"
+    },
+    {
+      "file": "13_UserID_Pwd_CSV_File.py",
+      "category": "python"
+    },
+    {
+      "file": "14_Stack_Operations.py",
+      "category": "python"
+    },
+    {
+      "file": "15_Linear_Search.py",
+      "category": "python"
+    },
+    {
+      "file": "16_Binary_Search.py",
+      "category": "python"
+    },
+    {
       "file": "17_CREATE_INSERT_Py_SQL.py",
       "category": "python"
     },
@@ -13,7 +41,43 @@
       "category": "python"
     },
     {
+      "file": "1_Invoice_Generation.py",
+      "category": "python"
+    },
+    {
       "file": "20_ALTER_Py_SQL.py",
+      "category": "python"
+    },
+    {
+      "file": "2_Armstrong_Numbers.py",
+      "category": "python"
+    },
+    {
+      "file": "3_Fibonacci_Series.py",
+      "category": "python"
+    },
+    {
+      "file": "4_ATM_Operations.py",
+      "category": "python"
+    },
+    {
+      "file": "5_Area_of_Shapes.py",
+      "category": "python"
+    },
+    {
+      "file": "6_Random_Generator.py",
+      "category": "python"
+    },
+    {
+      "file": "7_Count_Vow_Cons_UC_LC.py",
+      "category": "python"
+    },
+    {
+      "file": "8_Removing_Lines.py",
+      "category": "python"
+    },
+    {
+      "file": "9_Word_Separator.py",
       "category": "python"
     }
   ]
