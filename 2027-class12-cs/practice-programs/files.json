@@ -1,3 +1,48 @@
 {
-  "files": []
+  "files": [
+    {
+      "file": "CS - Practice Worksheet-1.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "CS - Practice Worksheet-2.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "CS - Practice Worksheet-3.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "Preparatory-1 - CS Answer Key.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "Python-SQL Connectivity QB.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "SQL QB.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "UT-1 - CS Answer Key.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "UT-2 - CS Answer Key.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "XII - CS - Preparatory-1.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "XII - CS - UT-1.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "XII - CS - UT-2.pdf",
+      "category": "pdf"
+    }
+  ]
 }
