@@ -1,3 +1,20 @@
 {
-  "files": []
+  "files": [
+    {
+      "file": "1-Numpy, Pandas and Matplotlib.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "2-SQL-IP.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "3-Computer Networks-IP.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "4-Societal Impacts.pdf",
+      "category": "pdf"
+    }
+  ]
 }
