@@ -1,3 +1,40 @@
 {
-  "files": []
+  "files": [
+    {
+      "file": "1-Getting Started with Python.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "2-Python Fundamentals.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "3-Data Types & Built-in Functions.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "4-Conditional & Loop - Flow of Control.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "5-Strings in Python.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "6-Lists in Python.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "7-Tuples in Python.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "8-Dictionaries in Python.pdf",
+      "category": "pdf"
+    },
+    {
+      "file": "9-Modules in Python.pdf",
+      "category": "pdf"
+    }
+  ]
 }
